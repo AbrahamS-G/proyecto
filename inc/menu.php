@@ -1,14 +1,11 @@
 <nav id="menu">
     <ul>
-        <li><a href="./inicio">Inicio</a></li>
-        <li><a href="./informacion">Información</a></li>
-        <li><a href="./landing">Landing</a></li>
-        <li><a href="./logout">Cerrar Sesión</a></li>
+        <li onclick="cargarPagina('./inicio',true,'Inicio')"><img src="./assets/img/default/inicio.svg" alt="">Inicio</li>
+        <li onclick="cargarPagina('./dashboard',true,'Dashboard')"><img src="./assets/img/default/dashboard.svg" alt="">Dashboard</li>
+        <li onclick="cargarPagina('./starting',true,'Starting')"><img src="./assets/img/default/starting.svg" alt="">Starting</li>
+        <li onclick="cargarPagina('./info',true,'Información')"><img src="./assets/img/default/info.svg" alt="">Información</li>
+        <li onclick="cargarPagina('./logout',true,'Cerrar Sesión')"><img src="./assets/img/default/logout.svg" alt="">Cerrar Sesión</li>
     </ul>
 </nav>
 <link rel="stylesheet" href="./assets/css/menu.css">
-<?php 
-    if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == 1 && $p !== "landing"){
-        echo '<script src="./assets/js/menu.js"></script>';
-    }
-?>
+<script src="./assets/js/menu.js"></script>

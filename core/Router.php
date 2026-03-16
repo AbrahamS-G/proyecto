@@ -2,6 +2,10 @@
 class Router{
     public function __construct(){
     }
+    public function esAjax() {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+               strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+    }
     public function resolver(){
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $base = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
@@ -19,8 +23,8 @@ class Router{
             header('location: ./');
             exit;
         }else
-        if(!isset($_SESSION['logueado']) && $p !== "landing"){
-            header('location: ./landing');
+        if(!isset($_SESSION['logueado']) && $p !== "starting"){
+            header('location: ./starting');
             exit;
         }
         

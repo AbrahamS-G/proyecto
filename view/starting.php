@@ -9,4 +9,4 @@
         <p>Landing</p>
     </div>
 </div>
-<a href="./">Volver al Inicio</a>
+<button onclick="cargarPagina('./inicio',true,'Inicio')">Volver al Inicio</button>

@@ -4,7 +4,7 @@ const menu = document.getElementById('menu');
 let cerrarTimer = null;
 
 function abrirMenu() {
-    clearTimeout(cerrarTimer); // cancela cualquier cierre pendiente
+    clearTimeout(cerrarTimer);
     menu.classList.add('active');
 }
 

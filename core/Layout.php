@@ -12,6 +12,10 @@ class Layout{
                 ?><link rel="stylesheet" href="./assets/css/menu.css"><?php
             }
             ?>
+            <link rel="stylesheet" href="./assets/css/loader.css">
+            <div id="loader">
+                <div class="loader"></div>
+            </div>
             <main class="main">
             <?php
         }
@@ -31,12 +35,10 @@ class Layout{
             include('./inc/footer.php');
             if ($p !== 'login' && isset($_SESSION['logueado']) && $_SESSION['logueado'] == true) { 
                 ?>
-                <script src="./assets/js/toast.js"></script>
                 <script src="./assets/js/main.js"></script>
                 <?php
             }
         }
-        
         if (!empty($_SESSION['toast'])) {
             $toasts = is_array($_SESSION['toast'][0])
                 ? $_SESSION['toast']

@@ -11,25 +11,22 @@
     display: flex;
     justify-content: space-between;
     list-style: none;
-    gap: 10px;
+    gap: 15px;
 }
-#menu ul li a{
+#menu ul li{
     color: white;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+#menu ul li:hover{
+    background-color: #545a7f;
 }
 #menu.active{
     display: flex;
-}
-.opciones-header{
-    cursor: pointer;
-    border: none;
-    background: none;
-    color: white;
-    font-size: 16px;
-    display: flex;
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    background-color: black;
-    height: 60px;
 }
