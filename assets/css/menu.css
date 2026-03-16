@@ -1,0 +1,35 @@
+#menu{
+    display: none;
+    background-color: #363a4d;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+#menu ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    gap: 10px;
+}
+#menu ul li a{
+    color: white;
+    text-decoration: none;
+}
+#menu.active{
+    display: flex;
+}
+.opciones-header{
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background-color: black;
+    height: 60px;
+}
