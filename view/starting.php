@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./assets/css/starting.css">
+<script src="./assets/js/starting.js"></script>
 <div class="starting starting-wrapper">
     <div class="forms-container">
         <div class="formFormat form-left">
@@ -26,10 +27,10 @@
             <li>Modulos AJAX.</li>
         </ul>
         <div class="buttons">
-            <button onclick="cargarPagina('./starting/login', true, 'Login')" class="btn-menu login login-button">
+            <button class="btn-menu login login-button">
             Iniciar Sesión
             </button>
-            <button onclick="cargarPagina('./starting/register', true, 'Register')" class="btn-menu register register-button">
+            <button class="btn-menu register register-button">
             Comenzar
             </button>
             <?php if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == 1){
@@ -39,41 +40,29 @@
             } ?>
         </div>
     </div>
-    <?php include_once '../view/login.php'; ?>
 </div>
+<script>
+    document.querySelector('.login-button').addEventListener('click', function() { 
+        mostrarLoader(2000);
+        mostrarLogin();
+    });
+    document.querySelector('.register-button').addEventListener('click', function() { 
+        mostrarLoader(2000);
+        mostrarRegister();
+    });
+</script>
 <?php 
 $parametro = isset($_GET['parametros'][0]) && !empty($_GET['parametros'][0]) ? $_GET['parametros'][0] : '';
 $parametro2 = isset($_GET['parametros'][1]) && !empty($_GET['parametros'][1]) ? $_GET['parametros'][1] : '';
-if($parametro == ''){
-    ?>
-    <script>
-    document.querySelector('.login-button').disabled = true;
-    </script>
-    <?php
-}
-if($parametro === 'register'){
-    ?>
-    <script>
-    // mostrar loader por 2 segundos
-    document.getElementById('loader').style.display = 'flex';
-    document.getElementById('cardStarting').classList.add('move-right');
-    document.getElementById('cardStarting').classList.remove('move-left');
-    document.querySelector('.register-button').disabled = true;
-    document.querySelector('.login-button').disabled = false;
-    mostrarLoader(2000);
-    </script> <?php
-}else if($parametro === 'login'){
-    ?>
-    <script>
-    document.getElementById('loader').style.display = 'flex';
-    document.getElementById('cardStarting').classList.remove('move-right');
-    document.getElementById('cardStarting').classList.add('move-left');
-    document.querySelector('.register-button').disabled = false;
-    document.querySelector('.login-button').disabled = true;
-    mostrarLoader(2000);
-    </script>
-<?php }
+if($parametro == ''){ ?>
+    <script>mostrarLogin();</script>
+<?php } 
 if($parametro2 == 'true'){
     $_SESSION['logueado'] = 1;
 }
 ?>
+<script>
+    document.querySelector('.starting').addEventListener('transitionend', function() {
+        document.getElementById('loader').style.display = 'none';
+    });
+</script>

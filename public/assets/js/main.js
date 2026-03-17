@@ -1,5 +1,5 @@
 function cargarPagina(url, saveHistory = true, titulo = "") {
-    mostrarLoader(500);
+    mostrarLoader();
     fetch(url, {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     })
@@ -18,6 +18,7 @@ function cargarPagina(url, saveHistory = true, titulo = "") {
                     window.history.pushState({}, '', url);
                 }
                 ejecutarScripts(contenedor);
+                document.getElementById('loader').style.display = 'none';
             }
         })
         .catch(error => {
@@ -28,9 +29,9 @@ function mostrarLoader(segundos = 2000) {
     const loader = document.getElementById('loader');
     if (loader) {
         loader.style.display = 'flex';
-        setTimeout(function () {
-            loader.style.display = 'none';
-        }, segundos);
+        // setTimeout(function () {
+        //     loader.style.display = 'none';
+        // }, segundos);
     }
 }
 document.addEventListener('submit', e => {

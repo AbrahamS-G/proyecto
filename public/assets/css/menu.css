@@ -1,6 +1,6 @@
-#menu{
+#menu {
     display: flex;
-    background-color: #363a4d;
+    background-color: #363a4df6;
     position: absolute;
     top: 0px;
     right: 0;
@@ -10,13 +10,15 @@
     transition: transform 0.3s ease-in-out;
     transform: translateY(-60px);
 }
-#menu ul{
+
+#menu ul {
     display: flex;
     justify-content: space-between;
     list-style: none;
     gap: 15px;
 }
-#menu ul li{
+
+#menu ul li {
     color: white;
     text-decoration: none;
     display: flex;
@@ -27,19 +29,22 @@
     cursor: pointer;
     user-select: none;
 }
-#menu ul li:hover{
+
+#menu ul li:hover {
     background-color: #545a7f;
 }
-#menu.active{
+
+#menu.active {
     display: flex;
     transition: opacity 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
     transform: translateY(60px);
 }
-#menu.inactive{
+
+#menu.inactive {
     display: flex;
     pointer-events: none;
     transform: translateY(-60px);
     transition: opacity 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
-}   
+}
