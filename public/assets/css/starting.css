@@ -45,7 +45,11 @@
     border-radius: 10px;
     margin: 10px;
 }
-
+@media screen and (max-height: 775px) {
+    .cardStarting {
+        font-size: 12px;
+    }
+}
 .cardStarting {
     box-shadow: 5px 5px 10px #c1cce01a;
     background-color: #2a2d3c;
