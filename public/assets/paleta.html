@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paleta de Colores Azul</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: black;
+        padding: 30px;
+      }
+      .color {
+        width: 120px;
+        height: 120px;
+        margin: 10px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        position: relative;
+      }
+      .color:hover {
+        transform: scale(1.06);
+      }
+      .hex {
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .label {
+        font-size: 13px;
+        opacity: 0.9;
+      }
+      /* Mensaje flotante */
+      .toast {
+        position: fixed;
+        bottom: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 8px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        font-size: 14px;
+      }
+      .toast.show {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toast" id="toast">Copiado</div>
+
+    <script>
+      const colors = {
+        50: "#2a2d3c",
+        100: "#2f3343",
+        200: "#363a4d",
+        300: "#3e4358",
+        400: "#474c64",
+        500: "#545a7f",
+        600: "#666d9c",
+        700: "#7880b3",
+        800: "#8e9ac3",
+        900: "#a7b4d2",
+        950: "#c1cce0",
+      };
+
+      // Función para determinar si el color es claro u oscuro
+      function isLight(hex) {
+        hex = hex.replace("#", "");
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        // fórmula perceptiva de luminosidad
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness > 150;
+      }
+
+      function showToast(text) {
+        const toast = document.getElementById("toast");
+        toast.textContent = text;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 1500);
+      }
+
+      for (const [nivel, hex] of Object.entries(colors)) {
+        const div = document.createElement("div");
+        div.className = "color";
+        div.style.background = hex;
+
+        const textColor = isLight(hex) ? "#000" : "#fff";
+        div.style.color = textColor;
+
+        div.innerHTML = `<div class="label">${nivel}</div><div class="hex">${hex}</div>`;
+
+        div.onclick = () => {
+          navigator.clipboard.writeText(hex);
+          div.style.transform = "scale(1.12)";
+          setTimeout(() => (div.style.transform = "scale(1)"), 200);
+          showToast(`Copiado: ${hex}`);
+        };
+
+        document.body.appendChild(div);
+      }
+    </script>
+  </body>
+</html>

@@ -1,14 +1,16 @@
 <?php
-require_once 'core/Router.php';
-require_once 'core/Bootstrap.php';
-require_once 'core/Layout.php';
-require_once 'core/UserOptions.php';
+require_once '../core/Router.php';
+require_once '../core/Bootstrap.php';
+require_once '../core/Layout.php';
+require_once '../core/UserOptions.php';
 $router = new Router();
 $con = Bootstrap::init();
 $p = $router->resolver();
 $userOptions = new UserOptions($con);
-if(!isset($_SESSION['logueado']) || $_SESSION['logueado'] !== 1){
-    $_SESSION['logueado'] = 1;
+if($p === 'logout'){
+    session_destroy();
+    echo "<script>window.location.href = './starting';</script>";
+    exit;
 }
 $data = [
     'url' => [],

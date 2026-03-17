@@ -1,11 +1,14 @@
 #menu{
-    display: none;
+    display: flex;
     background-color: #363a4d;
     position: absolute;
-    top: 60px;
+    top: 0px;
     right: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 3;
+    transition: opacity 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-60px);
 }
 #menu ul{
     display: flex;
@@ -29,4 +32,14 @@
 }
 #menu.active{
     display: flex;
+    transition: opacity 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(60px);
 }
+#menu.inactive{
+    display: flex;
+    pointer-events: none;
+    transform: translateY(-60px);
+    transition: opacity 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}   

@@ -6,6 +6,7 @@ let cerrarTimer = null;
 function abrirMenu() {
     clearTimeout(cerrarTimer);
     menu.classList.add('active');
+    menu.classList.remove('inactive');
 }
 
 function intentarCerrar() {
@@ -16,6 +17,7 @@ function intentarCerrar() {
 
         if (!hoverBoton && !hoverMenu) {
             menu.classList.remove('active');
+            menu.classList.add('inactive');
         }
 
     }, 500);

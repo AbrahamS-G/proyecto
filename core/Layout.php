@@ -6,11 +6,8 @@ class Layout{
                   strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 
         if (!$esAjax) {
-            include('./inc/header.php');
-            include('./inc/menu.php');
-            if($p !== 'login' && isset($_SESSION['logueado']) && $_SESSION['logueado'] == true){
-                ?><link rel="stylesheet" href="./assets/css/menu.css"><?php
-            }
+            include('../inc/header.php');
+            include('../inc/menu.php');
             ?>
             <link rel="stylesheet" href="./assets/css/loader.css">
             <div id="loader">
@@ -19,25 +16,20 @@ class Layout{
             <main class="main">
             <?php
         }
-        if(is_file('./view/'.$p.'.php')){
-            include('./view/'.$p.'.php');
+        if(is_file('../view/'.$p.'.php')){
+            include('../view/'.$p.'.php');
         }else{
             if($p == 'login'){
-                include('./login.php');
+                include('../view/login.php');
             }else{
-                include('./view/404.php');
+                include('../view/404.php');
             }
         }
         if (!$esAjax) {
         ?>
         </main>
         <?php
-            include('./inc/footer.php');
-            if ($p !== 'login' && isset($_SESSION['logueado']) && $_SESSION['logueado'] == true) { 
-                ?>
-                <script src="./assets/js/main.js"></script>
-                <?php
-            }
+            include('../inc/footer.php');
         }
         if (!empty($_SESSION['toast'])) {
             $toasts = is_array($_SESSION['toast'][0])
