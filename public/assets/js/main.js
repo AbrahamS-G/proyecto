@@ -1,5 +1,5 @@
 function cargarPagina(url, saveHistory = true, titulo = "") {
-    mostrarLoader(1000);
+    mostrarLoader(500);
     fetch(url, {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     })
