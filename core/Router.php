@@ -21,7 +21,7 @@ class Router{
         $_GET['parametros'] = array_slice($segmentos, 1);
         
         if($p === 'login' && isset($_SESSION['logueado']) && $_SESSION['logueado'] == 1){
-            echo "<script>cargarPagina('./inicio', true, 'Inicio');</script>";
+            header('location: /proyecto/inicio');
             exit;
         }else
         if(!isset($_SESSION['logueado']) || $_SESSION['logueado'] !== 1 && $p !== "starting"){

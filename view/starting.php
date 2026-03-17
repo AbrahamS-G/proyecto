@@ -54,12 +54,13 @@
 <?php 
 $parametro = isset($_GET['parametros'][0]) && !empty($_GET['parametros'][0]) ? $_GET['parametros'][0] : '';
 $parametro2 = isset($_GET['parametros'][1]) && !empty($_GET['parametros'][1]) ? $_GET['parametros'][1] : '';
-if($parametro == ''){ ?>
-    <script>mostrarLogin();</script>
-<?php } 
 if($parametro2 == 'true'){
     $_SESSION['logueado'] = 1;
 }
+if($parametro == ''){ ?>
+    <script>mostrarLogin();</script>
+<?php 
+} 
 ?>
 <script>
     document.querySelector('.starting').addEventListener('transitionend', function() {
