@@ -56,11 +56,15 @@ $parametro = isset($_GET['parametros'][0]) && !empty($_GET['parametros'][0]) ? $
 $parametro2 = isset($_GET['parametros'][1]) && !empty($_GET['parametros'][1]) ? $_GET['parametros'][1] : '';
 if($parametro2 == 'true'){
     $_SESSION['logueado'] = 1;
+    header('location: /proyecto/inicio');
 }
-if($parametro == ''){ ?>
+if($parametro == '' || $parametro == 'login'){ ?>
     <script>mostrarLogin();</script>
 <?php 
-} 
+}else if($parametro == 'register'){ ?>
+    <script>mostrarRegister();</script>
+<?php 
+}
 ?>
 <script>
     document.querySelector('.starting').addEventListener('transitionend', function() {

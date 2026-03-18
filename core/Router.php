@@ -20,17 +20,18 @@ class Router{
         $p = preg_replace('/[^a-zA-Z0-9_-]/', '', $p);
         $_GET['parametros'] = array_slice($segmentos, 1);
         
-        if($p === 'login' && isset($_SESSION['logueado']) && $_SESSION['logueado'] == 1){
+        if($p === 'starting' && isset($_SESSION['logueado']) && $_SESSION['logueado'] === 1){
             header('location: /proyecto/inicio');
             exit;
-        }else
-        if(!isset($_SESSION['logueado']) || $_SESSION['logueado'] !== 1 && $p !== "starting"){
-            $p = 'starting';
         }
-        if($p === 'starting' && isset($_SESSION['logueado']) && $_SESSION['logueado'] === 1){
-            $p = 'inicio';
+        // permitir entrar a url siempre y cuando tenga parametros
+        if((!isset($_SESSION['logueado']) || $_SESSION['logueado'] !== 1) && $p !== "starting"){
+            if($p == 'url' && isset($_GET['parametros'][0])){
+                return $p;
+            }
+            header('location: /proyecto/starting');
+            exit;
         }
-        
         return $p;
     }
 }

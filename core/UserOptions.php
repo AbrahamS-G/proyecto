@@ -14,4 +14,18 @@ class UserOptions{
         $stmt->execute();
         return $result1->fetch_assoc();
     }
+    public function crearUrl($urlLarga, $idUser){
+        $urlCorta = substr(md5($urlLarga.time()), 0, 6);
+        $stmt = $this->con->prepare("INSERT INTO urlscortas (UrlCorta, UrlLarga, IdUser) VALUES (?, ?, ?)");
+        $stmt->bind_param('ssi', $urlCorta, $urlLarga, $idUser);
+        $stmt->execute();
+        return $urlCorta;
+    }
+    public function obtenerUrls($idUser){
+        $stmt = $this->con->prepare("SELECT * FROM urlscortas WHERE IdUser = ?");
+        $stmt->bind_param('i', $idUser);
+        $stmt->execute();
+        $result1 = $stmt->get_result();
+        return $result1->fetch_all(MYSQLI_ASSOC);
+    }
 }

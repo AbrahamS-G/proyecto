@@ -26,7 +26,7 @@ if($router->esAjax() && $p !== 'login'){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <base href="http://localhost/proyecto/">
+    <base href="http://<?=$_SERVER['HTTP_HOST']?>/proyecto/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= ucfirst(str_replace('_', ' ', $p)); ?> - Proyecto</title>
     <link rel="stylesheet" href="./assets/css/index.css">

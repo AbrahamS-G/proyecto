@@ -5,6 +5,7 @@
         <li onclick="cargarPagina('./cuenta',true,'Cuenta')"><img src="./assets/img/default/cuenta.svg" alt="">Cuenta</li>
         <li onclick="cargarPagina('./info',true,'Información')"><img src="./assets/img/default/info.svg" alt="">Información</li>
         <li onclick="cargarPagina('./laboratorio',true,'Laboratorio')"><img src="./assets/img/default/lab.svg" alt="">Laboratorio</li>
+        <li onclick="cargarPagina('./url',true,'Urls')"><img src="./assets/img/default/link.svg" alt="">Acortador de URLs</li>
         <li onclick="cargarPagina('./logout',true,'Cerrar Sesión')"><img src="./assets/img/default/logout.svg" alt="">Cerrar Sesión</li>
         <button onclick="cargarPagina('./url/123',true,'URL')" class="btn-menu">Ir a Cuidados</button>
     </ul>
