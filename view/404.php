@@ -37,3 +37,6 @@
         background-color: #545a7f;
     }
 </style>
+<script>
+    crearToast('Error', './inicio', 'Página no encontrada.', 'error');
+</script>

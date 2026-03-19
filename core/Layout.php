@@ -14,6 +14,8 @@ class Layout{
                 <div class="loader"></div>
             </div>
             <main class="main">
+                <script src="./assets/js/main.js"></script>
+                <script src="./assets/js/toast.js"></script>
             <?php
         }
         if(is_file('../view/'.$p.'.php')){

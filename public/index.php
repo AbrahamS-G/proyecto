@@ -22,6 +22,7 @@ if($router->esAjax() && $p !== 'login'){
     exit;
 }
 ?>
+<div id="notificacionesToast"></div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +31,7 @@ if($router->esAjax() && $p !== 'login'){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= ucfirst(str_replace('_', ' ', $p)); ?> - Proyecto</title>
     <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/toast.css">
 </head>
 <body>
     <?php Layout::render($p, null, null,$data); ?>
@@ -38,6 +40,5 @@ if($router->esAjax() && $p !== 'login'){
             document.getElementById('loader').style.display = 'none';
         };
     </script>
-    <script src="./assets/js/main.js"></script>
 </body>
 </html>

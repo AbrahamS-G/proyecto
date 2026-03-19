@@ -25,10 +25,10 @@
             .then(response => response.json())
             .then(data => {
                 if(data.success){
-                    alert(data.message)
-                    window.location.href = '/proyecto/inicio';
+                    crearToast('Exito', '', data.message, 'exito');
+                    cargarPagina('./inicio',true, 'Inicio');
                 }else{
-                    alert(data.message);
+                    crearToast('Error', '', data.message, 'error');
                 }
             });
     });
