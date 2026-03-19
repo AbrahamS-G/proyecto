@@ -3,7 +3,7 @@
 <div class="starting starting-wrapper">
     <div class="forms-container">
         <div class="formFormat form-left">
-            <?php include '../view/login.php'; ?>
+            <?php include '../view/register.php'; ?>
         </div>
         <div class="formFormat form-right">
             <?php include '../view/login.php'; ?>

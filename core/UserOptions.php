@@ -28,4 +28,15 @@ class UserOptions{
         $result1 = $stmt->get_result();
         return $result1->fetch_all(MYSQLI_ASSOC);
     }
+    public function login($usuario, $clave){
+        $stmt = $this->con->prepare("SELECT IdUser, Usuario, Clave, Nombre FROM usuarios WHERE Usuario = ?");
+        $stmt->bind_param('s', $usuario);
+        $stmt->execute();
+        $result1 = $stmt->get_result();
+        $user = $result1->fetch_assoc();
+        if($user && password_verify($clave, $user['Clave'])){
+            return $user;
+        }
+        return null;
+    }
 }
