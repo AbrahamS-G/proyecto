@@ -1,16 +1,18 @@
 <?php
+require_once '../core/Auth.php';
 require_once '../core/Router.php';
 require_once '../core/Bootstrap.php';
 require_once '../core/Layout.php';
 require_once '../core/UserOptions.php';
+require_once '../core/Login.php';
 $router = new Router();
 $con = Bootstrap::init();
+$auth = new Autenticador($con);
 $p = $router->resolver();
 $userOptions = new UserOptions($con);
 if($p === 'logout'){
-    session_destroy();
-    echo "<script>window.location.href = './starting';</script>";
-    exit;
+    $login = new Login($con);
+    $login->logout();
 }
 $data = [
     'url' => [],
@@ -18,7 +20,7 @@ $data = [
 ];
 $data['url'] = ($p==='url' && isset($_GET['parametros'][0]) && !empty($_GET['parametros'][0]) ? $userOptions->obtenerUrl($_GET['parametros'][0]) : null);
 if($router->esAjax() && $p !== 'login'){
-    Layout::render($p, null, null, $data);
+    Layout::render($p, $auth, null, $data);
     exit;
 }
 ?>
@@ -34,7 +36,7 @@ if($router->esAjax() && $p !== 'login'){
     <link rel="stylesheet" href="./assets/css/toast.css">
 </head>
 <body>
-    <?php Layout::render($p, null, null,$data); ?>
+    <?php Layout::render($p, $auth, null,$data); ?>
     <script>
         window.onload = function(){
             document.getElementById('loader').style.display = 'none';

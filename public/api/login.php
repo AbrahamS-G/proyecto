@@ -1,6 +1,6 @@
 <?php
 require_once '../../core/Bootstrap.php';
-require_once '../../core/UserOptions.php';
+require_once '../../core/Login.php';
 $con = Bootstrap::init();
 $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
 $clave = isset($_POST['clave']) ? $_POST['clave'] : '';
@@ -8,17 +8,12 @@ $usuario = trim(strip_tags(htmlspecialchars($usuario)));
 $clave = trim(strip_tags(htmlspecialchars($clave)));
 
 if($usuario != '' && $clave != ''){
-    $userOptions = new UserOptions($con);
-    $user = $userOptions->login($usuario, $clave);
-    if($user){
-        $_SESSION['logueado'] = 1;
-        $_SESSION['datos'] = [
-            'id' => $user['IdUser'],
-            'usuario' => $user['Usuario'],
-            'nombre' => $user['Nombre'],
-        ];
+    $login = new Login($con);
+    $user = $login->log($usuario, $clave);
+    if($user['success']){
         echo json_encode([
             'success' => true,
+            'id' => $_SESSION['datos']['id'],
             'message' => 'Login exitoso'
         ]);
     }else{
@@ -26,7 +21,6 @@ if($usuario != '' && $clave != ''){
             'success' => false,
             'message' => 'Usuario o clave incorrectos'
         ]);
-        $_SESSION['logueado'] = 0;
     }
 }else{
     echo json_encode([

@@ -4,7 +4,7 @@ require_once '../../core/UserOptions.php';
 $con = Bootstrap::init();
 $userOptions = new UserOptions($con);
 $url = $_POST['url'] ?? null;
-$idUser = $_SESSION['IdUser'] ?? null;
+$idUser = $_SESSION['datos']['id'] ?? null;
 
 if(!$url){
     echo json_encode([
