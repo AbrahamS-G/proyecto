@@ -5,8 +5,8 @@ require_once '../core/Bootstrap.php';
 require_once '../core/Layout.php';
 require_once '../core/UserOptions.php';
 require_once '../core/Login.php';
-$router = new Router();
 $con = Bootstrap::init();
+$router = new Router($con);
 $auth = new Autenticador($con);
 $p = $router->resolver();
 $userOptions = new UserOptions($con);
@@ -14,6 +14,7 @@ if($p === 'logout'){
     $login = new Login($con);
     $login->logout();
 }
+
 $data = [
     'url' => [],
     'aumentar' => [],

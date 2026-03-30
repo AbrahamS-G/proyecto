@@ -4,7 +4,21 @@ class Layout{
         extract($data);
         $esAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
                   strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-
+        if(isset($_SESSION['datos']['estado']) && ($_SESSION['datos']['estado'] !== 'activo')){
+            ?>
+            <link rel="stylesheet" href="./assets/css/estadoCuenta.css">
+            <div id="EstadoCuenta">
+                <div class="container">
+                    <p>Tu cuenta esta suspendida o bloqueada</p>
+                    <button onclick="window.location.href = './logout';">Cerrar sesión</button>
+                    <button onclick="window.location.reload();">Recargar página</button>
+                    <small>Si crees que es un error, por favor contacta al administrador</small>
+                </div>
+            </div>
+        <?php 
+            $auth->validar();
+            exit; 
+        }
         if (!$esAjax) {
             include('../inc/header.php');
             include('../inc/menu.php');

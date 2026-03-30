@@ -5,7 +5,7 @@ class Login{
         $this->con = $con;
     }
     public function log($usuario, $clave){
-        $stmt = $this->con->prepare("SELECT IdUser, Usuario, Clave, Nombre FROM usuarios WHERE Usuario = ?");
+        $stmt = $this->con->prepare("SELECT IdUser, Usuario, Clave, Nombre, Estado FROM usuarios WHERE Usuario = ?");
         $stmt->bind_param('s', $usuario);
         $stmt->execute();
         $result1 = $stmt->get_result();
@@ -19,6 +19,7 @@ class Login{
                 'id' => $user['IdUser'],
                 'usuario' => $user['Usuario'],
                 'nombre' => $user['Nombre'],
+                'estado' => $user['Estado'],
             ];
             $datosSesion = [
                 'IdUser' => $user['IdUser'],
