@@ -14,10 +14,10 @@ class UserOptions{
         $stmt->execute();
         return $result1->fetch_assoc();
     }
-    public function crearUrl($urlLarga, $idUser){
+    public function crearUrl($urlLarga, $nombre, $idUser){
         $urlCorta = substr(md5($urlLarga.time()), 0, 6);
-        $stmt = $this->con->prepare("INSERT INTO urlscortas (UrlCorta, UrlLarga, IdUser) VALUES (?, ?, ?)");
-        $stmt->bind_param('ssi', $urlCorta, $urlLarga, $idUser);
+        $stmt = $this->con->prepare("INSERT INTO urlscortas (NombreUrl, UrlCorta, UrlLarga, IdUser) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param('sssi', $nombre, $urlCorta, $urlLarga, $idUser);
         $stmt->execute();
         return $urlCorta;
     }
@@ -27,6 +27,19 @@ class UserOptions{
         $stmt->execute();
         $result1 = $stmt->get_result();
         return $result1->fetch_all(MYSQLI_ASSOC);
+    }
+    public function eliminarUrl($urlCorta, $idUser){
+        $stmt = $this->con->prepare("SELECT * FROM urlscortas WHERE UrlCorta = ? AND IdUser = ?");
+        $stmt->bind_param('si', $urlCorta, $idUser);
+        $stmt->execute();
+        $result1 = $stmt->get_result();
+        if($result1->num_rows === 0){
+            return false;
+        }
+        $stmt = $this->con->prepare("DELETE FROM urlscortas WHERE UrlCorta = ? AND IdUser = ?");
+        $stmt->bind_param('si', $urlCorta, $idUser);
+        $stmt->execute();
+        return $result1->fetch_assoc();
     }
     
 }

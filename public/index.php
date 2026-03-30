@@ -18,8 +18,10 @@ if($p === 'logout'){
 $data = [
     'url' => [],
     'aumentar' => [],
+    'urls' => [],
 ];
 $data['url'] = ($p==='url' && isset($_GET['parametros'][0]) && !empty($_GET['parametros'][0]) ? $userOptions->obtenerUrl($_GET['parametros'][0]) : null);
+$data['urls'] = ($p==='url' && isset($_SESSION['datos']['id']) && !empty($_SESSION['datos']['id']) && !isset($_GET['parametros'][0]) ? $userOptions->obtenerUrls($_SESSION['datos']['id']) : []);
 if($router->esAjax() && $p !== 'login'){
     Layout::render($p, $auth, null, $data);
     exit;

@@ -1,113 +1,80 @@
 <?php
 $parametro = isset($_GET['parametros'][0]) ? $_GET['parametros'][0] : null;
-if($data['url'] !== null && !isset($_SESSION['url'])){
-    echo "Redirigiendo a: ".$data['url']['UrlLarga'];
-    $_SESSION['url'] = $data['url']['UrlLarga'];
-    ?>
-    <script>
-        window.location.href = "/proyecto/url";
-    </script>
-    <?php
-}else{
-    if(isset($_SESSION['url'])){
-        $url = $_SESSION['url'];
-        unset($_SESSION['url']);
+$urlencontrada = false;
+if ($parametro !== null) {
+    if (isset($data['url']['UrlLarga'])) {
+        // Caso: Existe y se encontró -> Redirigir
+        header("Location: " . $data['url']['UrlLarga']);
+        exit();
+    } else {
+        // Caso: Existe pero NO se encontró -> Mostrar error y detener
         ?>
-        <script>
-            window.location.href = "<?=$url?>";
-        </script>
-        <?php
-    }else{
-        if($data['url'] == null && $parametro !== null){
-            ?>
-            <div class="creadorUrl">
-                <h2>URL no encontrada</h2>
-            </div>
-            <?php
-        }else{  
-        ?>
-        <div class="creadorUrl">
-            <h2>Acortador de URLs</h2>
-            <form action="/proyecto/url" method="post">
-                <input type="text" name="url" placeholder="Ingresa la URL a acortar" id="UrlLarga" autocomplete="off">
-                <button class="btn-menu" type="button">Crear</button>
-            </form>
-            <b id="mensajeUrl"></b>
+        <link rel="stylesheet" href="./assets/css/url.css">
+        <div class="error-container">
+            <h1>404 - Enlace no encontrado</h1>
+            <p>Lo sentimos, la URL corta <strong>"<?= htmlspecialchars($parametro) ?>"</strong> no existe o ha sido eliminada.</p>
+            <a href="/proyecto/url" class="btn-menu">Volver al inicio</a>
         </div>
         <script>
-            // ajax de url mandarlo a /api/url con post
-            document.querySelector('.creadorUrl form button').addEventListener('click', function(e) {
-                const formData = new FormData(document.querySelector('.creadorUrl form'));
-                fetch('./public/api/url.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if(data.url){
-                        const url = 'http://' + window.location.hostname + '/proyecto/url/' + data.url;
-                        document.getElementById('mensajeUrl').innerHTML = `
-                            URL acortada:<br>
-                            <a href="${url}" target="_blank">${url}</a>
-                            <button class="btn-menu" onclick="navigator.clipboard.writeText('${url}'); this.innerHTML = 'Copiado'">Copiar</button>
-                        `;
-                        document.getElementById('UrlLarga').value = '';
-                    }else{
-                        document.getElementById('mensajeUrl').innerHTML = `
-                            ${data.message}
-                        `;
-                    }
-
-                }).catch(error => {
-                    alert(error.message);
-                });
-            });
+            ocultarLoader();
         </script>
-        <style>
-            .creadorUrl{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                height: 100vh;
-                text-align: center;
-                user-select: none;
-            }
-            .creadorUrl h2{
-                font-size: 2rem;
-                margin-bottom: 1rem;
-            }
-            .creadorUrl form{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 1rem;
-            }
-            .creadorUrl form input{
-                padding: 10px 20px;
-                border-radius: 5px;
-                border: none;
-                outline: none;
-            }
-            .creadorUrl form button{
-                padding: 10px 20px;
-                background-color: #363a4d;
-                color: white;
-                text-decoration: none;
-                border-radius: 5px;
-                border: none;
-                cursor: pointer;
-            }
-            .creadorUrl form button:hover{
-                background-color: #545a7f;
-            }
-            .creadorUrl a{
-                color: white;
-            }
-        </style>
         <?php
-        }
+        $urlnoencontrada = true;
     }
 }
-?>
+if(!isset($urlnoencontrada)){
+    ?>
+    <link rel="stylesheet" href="./assets/css/url.css">
+    <h2>Acortador de URLs</h2>
+    <div class="creadorUrl">
+        <form action="/proyecto/url" method="post">
+        <h2>Acortar una URL</h2>
+        <input type="text" name="nombre" placeholder="Ingresa el nombre de la URL" id="NombreUrl" autocomplete="off">
+        <input type="text" name="url" placeholder="Ingresa la URL a acortar" id="UrlLarga" autocomplete="off">
+        <button class="btn-menu" type="button">Crear</button>
+    </form>
+    <b id="mensajeUrl"></b>
+</div>
+<div class="misUrls">
+    <h2>Mis URLs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nombre</th>
+                <th>URL Corta</th>
+                <th>URL Larga</th>
+                <th>Visitas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            if(count($data['urls']) == 0){
+                ?>
+                <tr>
+                    <td colspan="6">No hay URLs</td>
+                </tr>
+                <?php
+            }else{
+                $count = 1; 
+                foreach($data['urls'] as $url): ?>
+                    <tr id="url<?=$url['UrlCorta']?>">
+                        <td><?=$count++?></td>
+                        <td><?=$url['NombreUrl']?></td>
+                    <td><a href="./url/<?=$url['UrlCorta']?>" target="_blank"><?=$url['UrlCorta']?></a></td>
+                    <td><a href="<?=$url['UrlLarga']?>" target="_blank"><?=$url['UrlLarga']?></a></td>
+                    <td><?=$url['Visitas']?></td>
+                    <td>
+                        <button class="btn-menu" onclick="copiarLink(this, '<?= $_SERVER['HTTP_HOST'] ?>/proyecto/url/<?=$url['UrlCorta']?>')">Copiar</button>
+                        <button class="btn-menu" onclick="eliminarUrl(this, '<?=$url['UrlCorta']?>')">Eliminar</button>
+                    </td>
+                </tr>
+            <?php endforeach; 
+            }?>
+        </tbody>
+    </table>
+</div>
+<script src="./assets/js/url.js"></script>
+    <?php
+}

@@ -1,0 +1,113 @@
+.creadorUrl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    user-select: none;
+}
+
+.creadorUrl h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.creadorUrl form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.creadorUrl form input {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.creadorUrl form button {
+    padding: 10px 20px;
+    background-color: #363a4d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.creadorUrl form button:hover {
+    background-color: #545a7f;
+}
+
+.creadorUrl a {
+    color: white;
+}
+
+.misUrls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.misUrls h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.misUrls table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.misUrls table th,
+.misUrls table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.misUrls table th {
+    background-color: #363a4d;
+    color: white;
+}
+
+.misUrls table tr:nth-child(even) {
+    background-color: #363a4d;
+}
+
+.misUrls table tr:hover {
+    background-color: #3e4358;
+}
+
+.misUrls table tr:hover td {
+    background-color: #474c64;
+}
+
+.misUrls table a {
+    color: white;
+}
+
+.misUrls table button {
+    padding: 10px 20px;
+    background-color: #363a4d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.misUrls table button:hover {
+    background-color: #545a7f;
+}

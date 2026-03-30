@@ -29,9 +29,12 @@ function mostrarLoader(segundos = 2000) {
     const loader = document.getElementById('loader');
     if (loader) {
         loader.style.display = 'flex';
-        // setTimeout(function () {
-        //     loader.style.display = 'none';
-        // }, segundos);
+    }
+}
+function ocultarLoader() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        loader.style.display = 'none';
     }
 }
 document.addEventListener('submit', e => {
