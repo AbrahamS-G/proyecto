@@ -7,7 +7,6 @@ function copiarLink(btn, url) {
             .then(() => darFeedback(btn))
             .catch(err => console.error('Error:', err));
     } else {
-        // Método de respaldo para entornos NO seguros (HTTP)
         const textArea = document.createElement("textarea");
         textArea.value = textoCompleto;
 
@@ -53,11 +52,9 @@ function eliminarUrl(btn, url) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                document.getElementById('mensajeUrl').innerHTML = ` ${data.message} `;
                 crearToast('Exito', '', data.message, 'exito');
-                document.getElementById('url' + url).style.display = 'none';
+                cargarPagina('./url', false, 'Urls');
             } else {
-                document.getElementById('mensajeUrl').innerHTML = ` ${data.message} `;
                 crearToast('Error', '', data.message, 'error');
             }
 
@@ -75,18 +72,14 @@ document.querySelector('.creadorUrl form button').addEventListener('click', func
         .then(response => response.json())
         .then(data => {
             if (data.url) {
-                const url = 'http://' + window.location.hostname + '/proyecto/url/' + data.url;
-                document.getElementById('mensajeUrl').innerHTML = `
-                            URL acortada:<br>
-                            <a href="${url}" target="_blank">${url}</a>
-                            <button class="btn-menu" onclick="copiarLink(this, '${url}')">Copiar</button>
-                        `;
-                document.getElementById('UrlLarga').value = '';
-                document.getElementById('NombreUrl').value = '';
+                console.log(data.url)
+                const url = window.location.hostname + '/proyecto/url/' + data.url;
+                copiarLink(this, url);
+                console.log(url);
+                crearToast('Exito', '', 'URL acortada creada y copiada con exito', 'exito');
+                cargarPagina('./url', false, 'Urls');
             } else {
-                document.getElementById('mensajeUrl').innerHTML = `
-                            ${data.message}
-                        `;
+                crearToast('Error', '', data.message, 'error');
             }
 
         }).catch(error => {

@@ -27,13 +27,13 @@ if(!isset($urlnoencontrada)){
     <link rel="stylesheet" href="./assets/css/url.css">
     <h2>Acortador de URLs</h2>
     <div class="creadorUrl">
+        <b id="mensajeUrl"></b>
         <form action="/proyecto/url" method="post">
         <h2>Acortar una URL</h2>
         <input type="text" name="nombre" placeholder="Ingresa el nombre de la URL" id="NombreUrl" autocomplete="off">
         <input type="text" name="url" placeholder="Ingresa la URL a acortar" id="UrlLarga" autocomplete="off">
         <button class="btn-menu" type="button">Crear</button>
     </form>
-    <b id="mensajeUrl"></b>
 </div>
 <div class="misUrls">
     <h2>Mis URLs</h2>

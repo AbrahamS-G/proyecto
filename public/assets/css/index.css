@@ -89,6 +89,7 @@ footer {
 }
 
 .btn-menu {
+    display: flex;
     cursor: pointer;
     border: none;
     background: #7880b3;
@@ -97,6 +98,8 @@ footer {
     width: fit-content;
     padding: 10px;
     border-radius: 5px;
+    align-items: center;
+    gap: 5px;
 }
 
 .btn-menu:hover {

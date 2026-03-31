@@ -14,6 +14,7 @@ function cargarPagina(url, saveHistory = true, titulo = "") {
                 contenedor.innerHTML = html;
                 document.title = titulo !== "" ? titulo + " - Proyecto" : "Proyecto";
                 document.getElementById('menu').classList.remove('active');
+                document.getElementById('menu').classList.add('inactive');
                 if (saveHistory) {
                     window.history.pushState({}, '', url);
                 }
