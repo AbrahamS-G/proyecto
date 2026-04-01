@@ -3,13 +3,9 @@ $parametro = isset($_GET['parametros'][0]) ? $_GET['parametros'][0] : null;
 $urlencontrada = false;
 if ($parametro !== null) {
     if (isset($data['url']['UrlLarga'])) {
-        // Caso: Existe y se encontró -> Redirigir
         header("Location: " . $data['url']['UrlLarga']);
         exit();
-    } else {
-        // Caso: Existe pero NO se encontró -> Mostrar error y detener
-        ?>
-        <link rel="stylesheet" href="./assets/css/url.css">
+    } else { ?>
         <div class="error-container">
             <h1>404 - Enlace no encontrado</h1>
             <p>Lo sentimos, la URL corta <strong>"<?= htmlspecialchars($parametro) ?>"</strong> no existe o ha sido eliminada.</p>
@@ -24,7 +20,6 @@ if ($parametro !== null) {
 }
 if(!isset($urlnoencontrada)){
     ?>
-    <link rel="stylesheet" href="./assets/css/url.css">
     <h2>Acortador de URLs</h2>
     <div class="creadorUrl">
         <b id="mensajeUrl"></b>
@@ -75,6 +70,5 @@ if(!isset($urlnoencontrada)){
         </tbody>
     </table>
 </div>
-<script src="./assets/js/url.js"></script>
     <?php
 }

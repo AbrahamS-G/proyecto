@@ -12,20 +12,3 @@
         <img src="./assets/img/default/flecha_arriba.svg" alt="">
     </div>
 </nav>
-<style>
-    .ocultar-menu{
-        display: flex;
-        cursor: pointer;
-        border: none;
-        background: #7880b3;
-        color: white;
-        font-size: 16px;
-        width: fit-content;
-        padding: 10px;
-        align-items: center;
-        margin-left: auto;
-    }
-    .ocultar-menu:hover{
-        background: #5a618f;
-    }
-</style>

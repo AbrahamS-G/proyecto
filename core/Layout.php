@@ -26,30 +26,30 @@ class Layout{
             
             $globalCss = ['index','menu','toast','loader'];
             $globalJs = ['main','menu','toast'];
-            $assets = self::getAssets($p);
             foreach($globalCss as $css){
                 echo '<link rel="stylesheet" href="./assets/css/'.$css.'.css">';
             }
             foreach($globalJs as $js){
                 echo '<script src="./assets/js/'.$js.'.js"></script>';
             }
-            foreach($assets['css'] as $css){
-                echo '<link rel="stylesheet" href="./assets/css/'.$css.'.css">';
-            }
             ?>
             <div id="loader"><div class="loader"></div></div>
             <main class="main">
             <?php } 
+            $assets = self::getAssets($p);
+            foreach($assets['css'] as $css){
+                echo '<link rel="stylesheet" href="./assets/css/'.$css.'.css">';
+            }
             if(is_file('../view/'.$p.'.php')){
                     include('../view/'.$p.'.php');
                 }else{
                     include('../view/404.php');
                 }
+            foreach($assets['js'] as $js){
+                echo '<script src="./assets/js/'.$js.'.js"></script>';
+            }
             if (!$esAjax) {
                 echo "</main>";
-                foreach($assets['js'] as $js){
-                    echo '<script src="./assets/js/'.$js.'.js"></script>';
-                }
                 include('../inc/footer.php');
         }
         if (!empty($_SESSION['toast'])) {
