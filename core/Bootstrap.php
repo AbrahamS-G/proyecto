@@ -2,7 +2,7 @@
 class Bootstrap{
     public static function init(){
         date_default_timezone_set('America/Mexico_City');
-        define("PROYECTO_VERSION", "BETA 0.0.1.7");
+        define("PROYECTO_VERSION", "BETA 0.0.1.8");
         require_once __DIR__ .'/Database.php';
         $con = Database::connect();
         if(session_status() == PHP_SESSION_NONE){

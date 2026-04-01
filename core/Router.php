@@ -21,28 +21,26 @@ class Router{
         $p = !empty($segmentos[0]) ? $segmentos[0] : 'inicio';
         $p = preg_replace('/[^a-zA-Z0-9_-]/', '', $p);
         $_GET['parametros'] = array_slice($segmentos, 1);
-        // permitir entrar a url siempre y cuando tenga parametros
-        if((!isset($_SESSION['logueado']) || $_SESSION['logueado'] !== 1) && $p !== "starting"){
-            if($p == 'url' && isset($_GET['parametros'][0])){
-                return $p;
-            }
-            header('location: /proyecto/starting');
+
+        if($p == 'url' && isset($_GET['parametros'][0])){
+            return $p;
+        }
+        if(!isset($_SESSION['logueado']) && isset($_COOKIE['proyectoToken'])){
+            $auth = new Autenticador($this->con);
+            $auth->validar();
+        }
+        if($p == 'login' || $p == 'register'){
+            header('location: /proyecto/starting/'.$p);
             exit;
         }
-        if($p == 'starting' && isset($_COOKIE['proyectoToken'])){
-            $auth = new Autenticador($this->con);
-            $auth->validar();
-            if($_SESSION['logueado'] === 1){
-                header('location: /proyecto/inicio');
-                exit;
-            }
-        }elseif($p !== 'starting' && isset($_COOKIE['proyectoToken']) && !isset($_SESSION['logueado']) && $p !== 'url'){
-            $auth = new Autenticador($this->con);
-            $auth->validar();
-            if($_SESSION['logueado'] === 1){
-                header('location: /proyecto/'.$p);
-                exit;
-            }
+        $estaLogueado = isset($_SESSION['logueado']) && $_SESSION['logueado'] === 1;
+        // permitir entrar a url siempre y cuando tenga parametros
+        if((!$estaLogueado) && $p !== "starting"){
+            header('location: /proyecto/starting');
+            exit;
+        }elseif($estaLogueado && $p === "starting"){
+            header('location: /proyecto/inicio');
+            exit;
         }
         return $p;
     }

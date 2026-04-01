@@ -5,23 +5,21 @@ require_once '../core/Bootstrap.php';
 require_once '../core/Layout.php';
 require_once '../core/UserOptions.php';
 require_once '../core/Login.php';
+require_once '../core/DataHandler.php';
+
 $con = Bootstrap::init();
 $router = new Router($con);
 $auth = new Autenticador($con);
+$handler = new DataHandler($con);
+
 $p = $router->resolver();
-$userOptions = new UserOptions($con);
+
 if($p === 'logout'){
     $login = new Login($con);
     $login->logout();
 }
 
-$data = [
-    'url' => [],
-    'aumentar' => [],
-    'urls' => [],
-];
-$data['url'] = ($p==='url' && isset($_GET['parametros'][0]) && !empty($_GET['parametros'][0]) ? $userOptions->obtenerUrl($_GET['parametros'][0]) : null);
-$data['urls'] = ($p==='url' && isset($_SESSION['datos']['id']) && !empty($_SESSION['datos']['id']) && !isset($_GET['parametros'][0]) ? $userOptions->obtenerUrls($_SESSION['datos']['id']) : []);
+$data = $handler->obtenerDatosParaVista($p);
 if($router->esAjax() && $p !== 'login'){
     Layout::render($p, $auth, null, $data);
     exit;
