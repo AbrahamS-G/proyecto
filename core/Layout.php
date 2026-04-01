@@ -1,9 +1,10 @@
 <?php 
 class Layout{
-    public static function render($p,$auth, $userService, $data = []){
+    public static function render($p,$auth, $data = []){
         extract($data);
         $esAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
                   strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+
         if(isset($_SESSION['datos']['estado']) && ($_SESSION['datos']['estado'] !== 'activo')){
             ?>
             <link rel="stylesheet" href="./assets/css/estadoCuenta.css">
@@ -22,30 +23,34 @@ class Layout{
         if (!$esAjax) {
             include('../inc/header.php');
             include('../inc/menu.php');
-            ?>
-            <link rel="stylesheet" href="./assets/css/loader.css">
-            <div id="loader">
-                <div class="loader"></div>
-            </div>
-            <main class="main">
-                <script src="./assets/js/main.js"></script>
-                <script src="./assets/js/toast.js"></script>
-            <?php
-        }
-        if(is_file('../view/'.$p.'.php')){
-            include('../view/'.$p.'.php');
-        }else{
-            if($p == 'login'){
-                include('../view/login.php');
-            }else{
-                include('../view/404.php');
+            
+            $globalCss = ['index','menu','toast','loader'];
+            $globalJs = ['main','menu','toast'];
+            $assets = self::getAssets($p);
+            foreach($globalCss as $css){
+                echo '<link rel="stylesheet" href="./assets/css/'.$css.'.css">';
             }
-        }
-        if (!$esAjax) {
-        ?>
-        </main>
-        <?php
-            include('../inc/footer.php');
+            foreach($globalJs as $js){
+                echo '<script src="./assets/js/'.$js.'.js"></script>';
+            }
+            foreach($assets['css'] as $css){
+                echo '<link rel="stylesheet" href="./assets/css/'.$css.'.css">';
+            }
+            ?>
+            <div id="loader"><div class="loader"></div></div>
+            <main class="main">
+            <?php } 
+            if(is_file('../view/'.$p.'.php')){
+                    include('../view/'.$p.'.php');
+                }else{
+                    include('../view/404.php');
+                }
+            if (!$esAjax) {
+                echo "</main>";
+                foreach($assets['js'] as $js){
+                    echo '<script src="./assets/js/'.$js.'.js"></script>';
+                }
+                include('../inc/footer.php');
         }
         if (!empty($_SESSION['toast'])) {
             $toasts = is_array($_SESSION['toast'][0])
@@ -65,5 +70,13 @@ class Layout{
             echo "</script>";
             unset($_SESSION['toast']);
         }
+    }
+    private static function getAssets($p){
+        $mapa = [
+            'starting' => ['css' => ['starting','login'], 'js' => ['starting']],
+            'url' => ['css' => ['url'], 'js' => ['url']],
+            'inicio' => ['css' => ['inicio'], 'js' => ['inicio']],
+        ];
+        return $mapa[$p] ?? ['css' => [], 'js' => []];
     }
 }

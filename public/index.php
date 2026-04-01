@@ -14,7 +14,7 @@ if($p === 'logout'){
 
 $data = $handler->obtenerDatosParaVista($p);
 if($router->esAjax() && $p !== 'login'){
-    Layout::render($p, $auth, null, $data);
+    Layout::render($p, $auth, $data);
     exit;
 }
 ?>
@@ -30,7 +30,7 @@ if($router->esAjax() && $p !== 'login'){
     <link rel="stylesheet" href="./assets/css/toast.css">
 </head>
 <body>
-    <?php Layout::render($p, $auth, null,$data); ?>
+    <?php Layout::render($p, $auth, $data); ?>
     <script>
         window.onload = function(){
             document.getElementById('loader').style.display = 'none';

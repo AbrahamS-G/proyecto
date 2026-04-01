@@ -11,18 +11,6 @@
     overflow: hidden;
 }
 
-#menu {
-    display: none;
-}
-
-#menu.active {
-    display: none;
-}
-
-#menu.inactive {
-    display: none;
-}
-
 .formFormat {
     display: flex;
     opacity: 0;
@@ -45,11 +33,13 @@
     border-radius: 10px;
     margin: 10px;
 }
+
 @media screen and (max-height: 775px) {
     .cardStarting {
         font-size: 12px;
     }
 }
+
 .cardStarting {
     box-shadow: 5px 5px 10px #c1cce01a;
     background-color: #2a2d3c;
@@ -101,17 +91,17 @@
     background-color: #2a2d3c;
 }
 
-ul {
+.cardStarting ul {
     list-style: none;
     padding-left: 20px;
 }
 
-ul li {
+.cardStarting ul li {
     position: relative;
     margin-bottom: 8px;
 }
 
-ul li::before {
+.cardStarting ul li::before {
     content: ">";
     color: #a7b4d2;
     font-weight: bold;

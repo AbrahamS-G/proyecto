@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="./assets/css/starting.css">
-<script src="./assets/js/starting.js"></script>
 <div class="starting starting-wrapper">
     <div class="forms-container">
         <div class="formFormat form-left">
@@ -33,11 +31,6 @@
             <button class="btn-menu register register-button">
             Comenzar
             </button>
-            <?php if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == 1){
-                echo "<button onclick='cargarPagina(\"./inicio\", true, \"Inicio\")' class='btn-menu'>
-                Ir a Inicio
-                </button>";
-            } ?>
         </div>
     </div>
 </div>
@@ -54,10 +47,22 @@
 <?php 
 $parametro = isset($_GET['parametros'][0]) && !empty($_GET['parametros'][0]) ? $_GET['parametros'][0] : '';
 if($parametro == '' || $parametro == 'login'){ ?>
-    <script>mostrarLogin();</script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (typeof mostrarLogin === "function") {
+            mostrarLogin();
+        }
+    });
+</script>
 <?php 
 }else if($parametro == 'register'){ ?>
-    <script>mostrarRegister();</script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (typeof mostrarRegister === "function") {
+            mostrarRegister();
+        }
+    });
+</script>
 <?php 
 }
 ?>
@@ -66,3 +71,14 @@ if($parametro == '' || $parametro == 'login'){ ?>
         document.getElementById('loader').style.display = 'none';
     });
 </script>
+<style>
+    #menu {
+        display: none;
+    }
+    #menu.active {
+        display: none;
+    }
+    #menu.inactive {
+        display: none;
+    }
+</style>

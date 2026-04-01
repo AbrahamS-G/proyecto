@@ -12,15 +12,6 @@
         <img src="./assets/img/default/flecha_arriba.svg" alt="">
     </div>
 </nav>
-<link rel="stylesheet" href="./assets/css/menu.css">
-<script src="./assets/js/menu.js"></script>
-<script>
-    function ocultarMenu(){
-        const menu = document.getElementById('menu');
-        menu.classList.remove('active');
-        menu.classList.add('inactive');
-    }
-</script>
 <style>
     .ocultar-menu{
         display: flex;

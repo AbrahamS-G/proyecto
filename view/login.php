@@ -11,7 +11,6 @@
         <small>¿Aún no tienes cuenta? <a href="">Pulsa Aquí</a></small>
     </form>
 </div>
-<link rel="stylesheet" href="./assets/css/login.css">
 <script>
     const btnIniciarSesion = document.querySelector('.btnIniciarSesion');
     btnIniciarSesion.addEventListener('click', function(e) {
@@ -27,6 +26,7 @@
                 if(data.success && data.id){
                     crearToast('Exito', '', data.message, 'exito');
                     cargarPagina('./inicio',true, 'Inicio');
+                    ocultarMenu();
                 }else{
                     crearToast('Error', '', data.message, 'error');
                 }

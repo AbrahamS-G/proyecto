@@ -28,6 +28,7 @@
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+    list-style: none;
     user-select: none;
 }
 
