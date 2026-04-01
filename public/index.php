@@ -1,12 +1,5 @@
 <?php
-require_once '../core/Auth.php';
-require_once '../core/Router.php';
 require_once '../core/Bootstrap.php';
-require_once '../core/Layout.php';
-require_once '../core/UserOptions.php';
-require_once '../core/Login.php';
-require_once '../core/DataHandler.php';
-
 $con = Bootstrap::init();
 $router = new Router($con);
 $auth = new Autenticador($con);
