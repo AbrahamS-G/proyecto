@@ -108,6 +108,14 @@
     cursor: pointer;
 }
 
+.misUrls table .acciones {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
 .misUrls table button:hover {
     background-color: #545a7f;
 }

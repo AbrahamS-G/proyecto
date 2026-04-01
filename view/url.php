@@ -65,7 +65,7 @@ if(!isset($urlnoencontrada)){
                     <td><a href="./url/<?=$url['UrlCorta']?>" target="_blank"><?=$url['UrlCorta']?></a></td>
                     <td><a href="<?=$url['UrlLarga']?>" target="_blank"><?=$url['UrlLarga']?></a></td>
                     <td><?=$url['Visitas']?></td>
-                    <td>
+                    <td class="acciones">
                         <button class="btn-menu" onclick="copiarLink(this, '<?= $_SERVER['HTTP_HOST'] ?>/proyecto/url/<?=$url['UrlCorta']?>')">Copiar</button>
                         <button class="btn-menu" onclick="eliminarUrl(this, '<?=$url['UrlCorta']?>')">Eliminar</button>
                     </td>

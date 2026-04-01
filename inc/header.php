@@ -1,9 +1,9 @@
-<header>
+<header class="headerGlobal">
     <h1 class="titulo">Proyecto</h1>
     <?php
     if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == 1){
     ?>
-    <details>
+    <details class="menuPerfil">
         <summary>
             <?php
             $nombre = $_SESSION['datos']['nombre'];

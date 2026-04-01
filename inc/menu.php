@@ -2,7 +2,7 @@
     <ul>
         <li onclick="cargarPagina('./inicio',true,'Inicio')"><img src="./assets/img/default/inicio.svg" alt="">Inicio</li>
         <li onclick="cargarPagina('./dashboard',true,'Dashboard')"><img src="./assets/img/default/dashboard.svg" alt="">Dashboard</li>
-        <li onclick="cargarPagina('./cuenta',true,'Cuenta')"><img src="./assets/img/default/cuenta.svg" alt="">Cuenta</li>
+        <li onclick="cargarPagina('./finanzas',true,'Finanzas')"><img src="./assets/img/default/finanzas.svg" alt="">Finanzas</li>
         <li onclick="cargarPagina('./info',true,'Información')"><img src="./assets/img/default/info.svg" alt="">Información</li>
         <li onclick="cargarPagina('./laboratorio',true,'Laboratorio')"><img src="./assets/img/default/lab.svg" alt="">Laboratorio</li>
         <li onclick="cargarPagina('./url',true,'Urls')"><img src="./assets/img/default/link.svg" alt="">Acortador de URLs</li>
