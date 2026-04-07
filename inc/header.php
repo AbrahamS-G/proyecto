@@ -13,6 +13,7 @@
         <ul>
             <li><a href="#">Perfil</a></li>
             <li><a href="#">Cerrar sesión</a></li>
+            <li><a href="">Este es el header</a></li>
         </ul>
     </details>
     <?php

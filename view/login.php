@@ -27,6 +27,25 @@
                     crearToast('Exito', '', data.message, 'exito');
                     cargarPagina('./inicio',true, 'Inicio');
                     ocultarMenu();
+                    const header = document.querySelector('.headerGlobal');
+                    if (header && !header.querySelector('.menuPerfil')) {
+                        const detailsHTML = `
+                        <details class="menuPerfil">
+                            <summary>
+                                <b>${data.nombre}</b>
+                            </summary>
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li><a href="#">Cerrar sesión</a></li>
+                                <li><a href="#">Este es el AJAX</a></li>
+                            </ul>
+                        </details>
+                        `;
+                        header.insertAdjacentHTML('beforeend', detailsHTML);
+                    } else if (header) {
+                        const summaryB = header.querySelector('.menuPerfil summary b');
+                        if (summaryB) summaryB.textContent = data.nombre;
+                    }
                 }else{
                     crearToast('Error', '', data.message, 'error');
                 }

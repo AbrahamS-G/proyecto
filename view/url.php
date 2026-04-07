@@ -1,6 +1,5 @@
 <?php
 $parametro = isset($_GET['parametros'][0]) ? $_GET['parametros'][0] : null;
-$urlencontrada = false;
 if ($parametro !== null) {
     if (isset($data['url']['UrlLarga'])) {
         header("Location: " . $data['url']['UrlLarga']);
@@ -20,7 +19,7 @@ if ($parametro !== null) {
 }
 if(!isset($urlnoencontrada)){
     ?>
-    <h2>Acortador de URLs</h2>
+    <h2 class="tituloPagina"><img src="./assets/img/default/link.svg" alt="Acortador de URLs"> Acortador de URLs</h2>
     <div class="creadorUrl">
         <b id="mensajeUrl"></b>
         <form action="/proyecto/url" method="post">

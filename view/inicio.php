@@ -1,1 +1,1 @@
-<h2>Inicio</h2>
+<h2 class="tituloPagina"><img src="./assets/img/default/inicio.svg" alt=""> Inicio</h2>

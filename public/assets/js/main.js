@@ -19,14 +19,14 @@ function cargarPagina(url, saveHistory = true, titulo = "") {
                     window.history.pushState({}, '', url);
                 }
                 ejecutarScripts(contenedor);
-                document.getElementById('loader').style.display = 'none';
             }
+            document.getElementById('loader').style.display = 'none';
         })
         .catch(error => {
             console.error(error);
         });
 }
-function mostrarLoader(segundos = 2000) {
+function mostrarLoader() {
     const loader = document.getElementById('loader');
     if (loader) {
         loader.style.display = 'flex';

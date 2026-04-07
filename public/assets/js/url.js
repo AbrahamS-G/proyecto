@@ -59,7 +59,7 @@ function eliminarUrl(btn, url) {
             }
 
         }).catch(error => {
-            alert(error.message);
+            crearToast('Error', '', error.message, 'error');
         });
 }
 // ajax de url mandarlo a /api/url con post
@@ -83,6 +83,6 @@ document.querySelector('.creadorUrl form button').addEventListener('click', func
             }
 
         }).catch(error => {
-            alert(error.message);
+            crearToast('Error', '', error.message, 'error');
         });
 });

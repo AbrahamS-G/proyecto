@@ -16,24 +16,43 @@
     display: flex;
     justify-content: space-between;
     list-style: none;
-    gap: 15px;
+    gap: 20px;
 }
 
 #menu ul li {
     color: white;
     text-decoration: none;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 5px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     list-style: none;
     user-select: none;
+    width: fit-content;
+    position: relative;
 }
 
-#menu ul li:hover {
+/* poner como si fuera un boton */
+/* #menu ul li:hover {
     background-color: #545a7f;
+} */
+
+#menu ul li::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+#menu ul li:hover::after {
+    width: calc(100% - 30px);
 }
 
 #menu.active {
@@ -51,8 +70,17 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.ocultar-menu {
+.opciones-extra {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+}
+
+.ocultar-menu img {
+    display: flex;
+    flex-direction: row;
     cursor: pointer;
     border: none;
     background: #7880b3;
@@ -61,9 +89,10 @@
     width: fit-content;
     padding: 10px;
     align-items: center;
-    margin-left: auto;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
-.ocultar-menu:hover {
+.ocultar-menu img:hover {
     background: #5a618f;
 }

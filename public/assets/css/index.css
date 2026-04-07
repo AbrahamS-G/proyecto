@@ -105,3 +105,18 @@ footer {
 .btn-menu:hover {
     background: #5a618f;
 }
+
+.tituloPagina {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+    border-bottom: 2px solid #5a618f;
+    width: fit-content;
+    transition: transform 0.3s ease-in-out;
+}
+
+.tituloPagina:hover {
+    border-bottom: 2px solid #7880b3;
+    transform: translateY(-3px);
+}
