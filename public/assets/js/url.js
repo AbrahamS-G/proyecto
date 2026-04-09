@@ -33,7 +33,7 @@ function copiarLink(btn, url) {
 // Función auxiliar para el cambio de texto
 function darFeedback(btn) {
     const originalText = btn.innerHTML;
-    btn.innerHTML = "Copiado";
+    btn.innerHTML = "<img src='./assets/img/default/confirmado.svg' alt='Copiado'>Copiado";
     btn.classList.add('copiado'); // Opcional por si quieres darle estilo CSS
 
     setTimeout(() => {

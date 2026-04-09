@@ -85,3 +85,34 @@ window.addEventListener('popstate', function () {
     const rutaActual = window.location.pathname.split('/').pop() || 'inicio';
     cargarPagina(rutaActual, false);
 });
+
+// Menu perfil header (Delegación de eventos para soportar inserción dinámica tras login)
+let timeoutPerfil;
+let timeoutClose;
+
+document.addEventListener('mouseover', (e) => {
+    const menuPerfilHeader = e.target.closest('#menuPerfilHeader');
+    if (menuPerfilHeader) {
+        clearTimeout(timeoutPerfil);
+        clearTimeout(timeoutClose);
+        menuPerfilHeader.setAttribute('open', '');
+        setTimeout(() => {
+            menuPerfilHeader.classList.add('is-active');
+        }, 10);
+    }
+});
+
+document.addEventListener('mouseout', (e) => {
+    const menuPerfilHeader = e.target.closest('#menuPerfilHeader');
+    if (menuPerfilHeader) {
+        if (!menuPerfilHeader.contains(e.relatedTarget)) {
+            timeoutPerfil = setTimeout(() => {
+                menuPerfilHeader.classList.remove('is-active');
+
+                timeoutClose = setTimeout(() => {
+                    menuPerfilHeader.removeAttribute('open');
+                }, 500);
+            }, 500);
+        }
+    }
+});

@@ -66,19 +66,22 @@
 }
 
 .misUrls table {
-    width: 100%;
-    border-collapse: collapse;
+    width: fit-content;
+    border-radius: 5px;
 }
 
 .misUrls table th,
 .misUrls table td {
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 5px;
     text-align: center;
+    min-width: 100px;
 }
 
 .misUrls table th {
+    padding: 15px;
+    border: 1px solid #ccc;
     background-color: #363a4d;
+    border-radius: 5px;
     color: white;
 }
 
@@ -108,14 +111,24 @@
     cursor: pointer;
 }
 
-.misUrls table .acciones {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    text-align: center;
-    justify-content: center;
+.acciones-th {
+    width: 200px;
 }
 
-.misUrls table button:hover {
-    background-color: #545a7f;
+.misUrls table .buttons {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.misUrls table .btn-copiar:hover {
+    background-color: #21854a;
+}
+
+.misUrls table .btn-eliminar:hover {
+    background-color: #e74c3c;
 }

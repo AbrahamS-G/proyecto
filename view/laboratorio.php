@@ -1,0 +1,1 @@
+<h2 class="tituloPagina"><img src="./assets/img/default/lab.svg" alt="Laboratorio"> Laboratorio</h2>

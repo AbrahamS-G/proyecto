@@ -19,7 +19,7 @@ if ($parametro !== null) {
 }
 if(!isset($urlnoencontrada)){
     ?>
-    <h2 class="tituloPagina"><img src="./assets/img/default/link.svg" alt="Acortador de URLs"> Acortador de URLs</h2>
+    <h2 class="tituloPagina"><img src="./assets/img/default/link.svg" alt="Acortador"> Acortador</h2>
     <div class="creadorUrl">
         <b id="mensajeUrl"></b>
         <form action="/proyecto/url" method="post">
@@ -39,7 +39,7 @@ if(!isset($urlnoencontrada)){
                 <th>URL Corta</th>
                 <th>URL Larga</th>
                 <th>Visitas</th>
-                <th>Acciones</th>
+                <th class="acciones-th">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -60,8 +60,10 @@ if(!isset($urlnoencontrada)){
                     <td><a href="<?=$url['UrlLarga']?>" target="_blank"><?=$url['UrlLarga']?></a></td>
                     <td><?=$url['Visitas']?></td>
                     <td class="acciones">
-                        <button class="btn-menu" onclick="copiarLink(this, '<?= $_SERVER['HTTP_HOST'] ?>/proyecto/url/<?=$url['UrlCorta']?>')">Copiar</button>
-                        <button class="btn-menu" onclick="eliminarUrl(this, '<?=$url['UrlCorta']?>')">Eliminar</button>
+                        <div class="buttons">
+                            <button class="btn-copiar" onclick="copiarLink(this, '<?= $_SERVER['HTTP_HOST'] ?>/proyecto/url/<?=$url['UrlCorta']?>')"><img src="./assets/img/default/copiar.svg" alt="Copiar">Copiar</button>
+                            <button class="btn-eliminar" onclick="eliminarUrl(this, '<?=$url['UrlCorta']?>')"><img src="./assets/img/default/borrar.svg" alt="Borrar">Eliminar</button>
+                        </div>
                     </td>
                 </tr>
             <?php endforeach; 

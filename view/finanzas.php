@@ -1,0 +1,1 @@
+<h2 class="tituloPagina"><img src="./assets/img/default/finanzas.svg" alt="Finanzas"> Finanzas</h2>

@@ -30,16 +30,16 @@
                     const header = document.querySelector('.headerGlobal');
                     if (header && !header.querySelector('.menuPerfil')) {
                         const detailsHTML = `
-                        <details class="menuPerfil">
-                            <summary>
-                                <b>${data.nombre}</b>
-                            </summary>
-                            <ul>
-                                <li><a href="#">Perfil</a></li>
-                                <li><a href="#">Cerrar sesión</a></li>
-                                <li><a href="#">Este es el AJAX</a></li>
-                            </ul>
-                        </details>
+                            <details class="menuPerfil" id="menuPerfilHeader">
+                                <summary>
+                                    <b>${data.nombre}</b>
+                                </summary>
+                                <ul>
+                                    <li onclick="cargarPagina('./perfil',true,'Perfil')"><img src="./assets/img/default/perfil.svg" alt="">Perfil</li>
+                                    <li onclick="cargarPagina('./info',true,'Información')"><img src="./assets/img/default/info.svg" alt="">Información</li>
+                                    <li onclick="cargarPagina('./logout',true,'Cerrar Sesión')"><img src="./assets/img/default/logout.svg" alt="">Cerrar sesión</li>
+                                </ul>
+                            </details>
                         `;
                         header.insertAdjacentHTML('beforeend', detailsHTML);
                     } else if (header) {
