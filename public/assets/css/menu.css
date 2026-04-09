@@ -34,11 +34,6 @@
     position: relative;
 }
 
-/* poner como si fuera un boton */
-/* #menu ul li:hover {
-    background-color: #545a7f;
-} */
-
 #menu ul li::after {
     content: '';
     position: absolute;
