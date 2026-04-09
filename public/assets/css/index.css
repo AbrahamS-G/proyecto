@@ -110,6 +110,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 5px;
+    padding: 5px;
     margin-left: 10px;
     border-bottom: 2px solid #5a618f;
     width: fit-content;
@@ -160,7 +161,7 @@ footer {
     /* Animacion inicial (oculto) */
     opacity: 0;
     transform: translateY(-20px);
-    transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     pointer-events: none;
 }
 
