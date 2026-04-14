@@ -22,7 +22,7 @@ class Layout{
         }
         if (!$esAjax) {
             include('../inc/header.php');
-            if($p !== 'starting'){
+            if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == 1){
                 include('../inc/menu.php');
             }
             $globalCss = ['index','menu','toast','loader'];

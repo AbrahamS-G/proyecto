@@ -6,8 +6,8 @@
     background-color: #2A2A2A;
     border-radius: 10px;
     margin: 0 auto;
-    width: 25dvw;
-    height: 46dvh;
+    width: 26dvw;
+    height: 48dvh;
     padding: 15px;
 }
 
@@ -67,7 +67,7 @@
     margin-left: auto;
     padding: 0;
     margin-top: -8px;
-    margin-right: 10px;
+    margin-right: 25px;
 }
 
 #login form small a {
