@@ -7,8 +7,7 @@
         <li onclick="cargarPagina('./url',true,'Acortador')"><img src="./assets/img/default/link.svg" alt="Acortador de URLs"><span>Acortador de URLs</span></li>
     </ul>
     <div class="opciones-extra">
-        <button onclick="cargarPagina('./logout',true,'Cerrar Sesión')" class="btn-menu"><img src="./assets/img/default/logout.svg" alt="">Cerrar Sesión</button>
-        <div class="ocultar-menu" onclick="ocultarMenu()" title="Ocultar menú">
+        <div class="ocultar-menu" id="ocultar-menu" onclick="ocultarMenu()" title="Ocultar menú">
             <img src="./assets/img/default/flecha_arriba.svg" alt="">
         </div>
     </div>

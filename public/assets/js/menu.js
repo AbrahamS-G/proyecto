@@ -1,47 +1,27 @@
-// proyecto/public/assets/js/menu.js
-
 function inicializarMenu() {
-    const boton = document.querySelector('.titulo');
-    const menu = document.getElementById('menu');
-
-    if (!boton || !menu) return;
-
-    // Limpiamos eventos previos para no duplicarlos
-    boton.removeEventListener('mouseenter', abrirMenu);
-    menu.removeEventListener('mouseenter', abrirMenu);
-    boton.removeEventListener('mouseleave', intentarCerrar);
-    menu.removeEventListener('mouseleave', intentarCerrar);
-
-    let cerrarTimer = null;
-
-    function abrirMenu() {
-        clearTimeout(cerrarTimer);
-        menu.classList.add('active');
-        menu.classList.remove('inactive');
+    if (localStorage.getItem('menu') === 'oculto') {
+        ocultarMenu();
+    } else {
+        mostrarMenu();
     }
-
-    function intentarCerrar() {
-        cerrarTimer = setTimeout(() => {
-            const hoverBoton = boton.matches(':hover');
-            const hoverMenu = menu.matches(':hover');
-            if (!hoverBoton && !hoverMenu) {
-                menu.classList.remove('active');
-                menu.classList.add('inactive');
-            }
-        }, 500);
-    }
-
-    boton.addEventListener('mouseenter', abrirMenu);
-    menu.addEventListener('mouseenter', abrirMenu);
-    boton.addEventListener('mouseleave', intentarCerrar);
-    menu.addEventListener('mouseleave', intentarCerrar);
 }
 
 function ocultarMenu() {
-    const menu = document.getElementById('menu');
-    menu.classList.remove('active');
-    menu.classList.add('inactive');
+    document.body.classList.remove('active');
+    document.body.classList.add('inactive');
+    if (document.getElementById('ocultar-menu')) {
+        document.getElementById('ocultar-menu').onclick = mostrarMenu;
+    }
+    localStorage.setItem('menu', 'oculto');
 }
 
-// La ejecutamos la primera vez
+function mostrarMenu() {
+    document.body.classList.remove('inactive');
+    document.body.classList.add('active');
+    if (document.getElementById('ocultar-menu')) {
+        document.getElementById('ocultar-menu').onclick = ocultarMenu;
+    }
+    localStorage.setItem('menu', 'visible');
+}
+
 inicializarMenu();

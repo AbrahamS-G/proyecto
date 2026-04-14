@@ -1,19 +1,20 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #3e4358;
+    background-color: #0F0F0F;
     min-height: 100vh;
     max-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 250px 1fr;
     grid-template-rows: 60px 1fr 60px;
     grid-template-areas:
-        'header'
-        'main'
-        'footer';
+        'header header'
+        'menu main'
+        'footer footer';
     cursor: default;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    transition: grid-template-columns 0.3s ease-in-out;
 }
 
 /* estilo del scroll */
@@ -43,7 +44,6 @@ header {
 }
 
 header h1 {
-    cursor: pointer;
     user-select: none;
 }
 
@@ -68,12 +68,11 @@ header,
 footer {
     display: flex;
     align-items: center;
-    background: #2a2d3c;
+    background: #1E1E1E;
     color: white;
 }
 
 .menu {
-    grid-area: menu;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,7 +91,7 @@ footer {
     display: flex;
     cursor: pointer;
     border: none;
-    background: #7880b3;
+    background: #BB86FC;
     color: white;
     font-size: 16px;
     width: fit-content;
@@ -100,10 +99,12 @@ footer {
     border-radius: 5px;
     align-items: center;
     gap: 5px;
+    border: 1px solid #BB86FC;
 }
 
 .btn-menu:hover {
-    background: #5a618f;
+    background: #2A2A2A;
+    border: 1px solid #BB86FC;
 }
 
 .tituloPagina {
@@ -135,6 +136,9 @@ footer {
     border-radius: 5px;
     transition: background-color 0.3s ease;
     user-select: none;
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
 }
 
 .menuPerfil summary::-webkit-details-marker {
@@ -143,14 +147,14 @@ footer {
 
 .menuPerfil summary:hover,
 .menuPerfil.is-active summary {
-    background-color: #363a4df6;
+    background-color: #2A2A2A;
 }
 
 .menuPerfil ul {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #363a4df6;
+    background-color: #2A2A2A;
     padding: 10px;
     border-radius: 5px;
     list-style: none;
@@ -174,14 +178,15 @@ footer {
     display: flex;
     align-items: center;
     gap: 5px;
+    color: #F1F1F1;
 }
 
 .menuPerfil ul li:hover {
-    background-color: #5a618f;
+    background-color: #263859;
 }
 
 .menuPerfil ul li a {
-    color: white;
+    color: #F1F1F1;
     text-decoration: none;
     display: block;
     width: 100%;

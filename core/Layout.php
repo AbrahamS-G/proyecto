@@ -22,8 +22,9 @@ class Layout{
         }
         if (!$esAjax) {
             include('../inc/header.php');
-            include('../inc/menu.php');
-            
+            if($p !== 'starting'){
+                include('../inc/menu.php');
+            }
             $globalCss = ['index','menu','toast','loader'];
             $globalJs = ['main','menu','toast'];
             foreach($globalCss as $css){

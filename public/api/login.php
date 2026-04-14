@@ -15,7 +15,8 @@ if($usuario != '' && $clave != ''){
             'success' => true,
             'id' => $_SESSION['datos']['id'],
             'nombre' => $_SESSION['datos']['nombre'],
-            'message' => 'Login exitoso'
+            'message' => 'Login exitoso',
+            'requireMenu' => true
         ]);
     }else{
         echo json_encode([

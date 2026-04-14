@@ -26,7 +26,12 @@
                 if(data.success && data.id){
                     crearToast('Exito', '', data.message, 'exito');
                     cargarPagina('./inicio',true, 'Inicio');
-                    ocultarMenu();
+                    if(data.requireMenu){
+                        fetch('./inicio', { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                        .then(() => {
+                            location.reload();
+                        });
+                    }
                     const header = document.querySelector('.headerGlobal');
                     if (header && !header.querySelector('.menuPerfil')) {
                         const detailsHTML = `

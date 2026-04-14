@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #2a2d3c;
+    background-color: #2A2A2A;
     border-radius: 10px;
     margin: 0 auto;
     width: 25dvw;
@@ -24,7 +24,7 @@
     width: calc(100% - 22px);
     padding: 10px;
     border-radius: 10px;
-    background-color: #363a4d;
+    background-color: #1E1E1E;
     color: white;
     border: 1px solid #474c64;
     outline: none;
@@ -40,9 +40,9 @@
     padding: 10px;
     border-radius: 10px;
     border: none;
-    background-color: #474c64;
+    background-color: #263859;
     color: white;
-    border: 1px solid #474c64;
+    border: 1px solid #263859;
     outline: none;
     cursor: pointer;
     transition: all 0.3s ease;

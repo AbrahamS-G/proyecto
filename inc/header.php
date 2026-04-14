@@ -5,6 +5,7 @@
     ?>
     <details class="menuPerfil" id="menuPerfilHeader">
         <summary>
+            <img src="./assets/img/default/perfil.svg" alt="">
             <?php
             $nombre = $_SESSION['datos']['nombre'];
             echo "<b>$nombre</b>";

@@ -71,14 +71,3 @@ if($parametro == '' || $parametro == 'login'){ ?>
         document.getElementById('loader').style.display = 'none';
     });
 </script>
-<style>
-    #menu {
-        display: none;
-    }
-    #menu.active {
-        display: none;
-    }
-    #menu.inactive {
-        display: none;
-    }
-</style>
