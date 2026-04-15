@@ -44,7 +44,9 @@ function crearToast(titulo, link, texto = 'Sin mensaje', tipo = 'info', color = 
     // Si tiene link
     if (link && link !== '') {
         notificacion.style.cursor = 'pointer';
-        notificacion.innerHTML = `<a onclick="cargarPagina('${link}', true)" class="link-toast">${contenido}</a>`;
+        // quitar el toast al hacer clic en el link
+        notificacion.innerHTML = `<a onclick="cargarPagina('${link}', true);" class="link-toast">${contenido}</a>`;
+        notificacion.addEventListener('click', () => notificacion.remove());
     } else {
         notificacion.innerHTML = contenido;
     }
