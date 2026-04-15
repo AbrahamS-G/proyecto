@@ -38,17 +38,31 @@ if($eliminar){
         'message' => 'No se recibió la URL'
     ]);
     exit;
-}else if(!$nombre){
+}else if(!$nombre || !preg_match('/^[a-zA-Z0-9_\-\.]+$/', $nombre) || preg_match('/^(https?:\/\/|www\.).+$/', $nombre)){
     echo json_encode([
         'success' => false,
-        'message' => 'No se recibió el nombre'
+        'message' => 'No se recibió el nombre o el nombre no es valido'
+    ]);
+    exit;
+}else if(!preg_match('/^(https?:\/\/|www\.).+$/', $url)){
+    echo json_encode([
+        'success' => false,
+        'message' => 'No se recibió la URL o la URL no es valida'
     ]);
     exit;
 }else{
     $url = $userOptions->crearUrl($url, $nombre, $idUser);
-    echo json_encode([
-        'success' => true,
-        'url' => $url
-    ]);
-    exit;
+    if($url){
+        echo json_encode([
+            'success' => true,
+            'url' => $url
+        ]);
+        exit;
+    }else{
+        echo json_encode([
+            'success' => false,
+            'message' => 'No se pudo crear la URL'
+        ]);
+        exit;
+    }
 }

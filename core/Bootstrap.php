@@ -2,8 +2,7 @@
 class Bootstrap{
     public static function init(){
         date_default_timezone_set('America/Mexico_City');
-        define("PROYECTO_VERSION", "BETA 0.0.4.2");
-        // nombre de la sesion
+        define("PROYECTO_VERSION", "BETA 0.0.4.3");
         session_name("PROYECTO");
 
         spl_autoload_register(function ($class) {
