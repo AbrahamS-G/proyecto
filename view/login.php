@@ -13,8 +13,10 @@
 </div>
 <script>
     const btnIniciarSesion = document.querySelector('.btnIniciarSesion');
+    // al mandar el formulario, deshabilitar el boton hasta recibir respuesta para evitar duplicidad
     btnIniciarSesion.addEventListener('click', function(e) {
         e.preventDefault();
+        btnIniciarSesion.disabled = true;
         const form = document.querySelector('#login form');
         const formData = new FormData(form);
         fetch('/proyecto/api/login.php', {
@@ -24,7 +26,6 @@
             .then(response => response.json())
             .then(data => {
                 if(data.success && data.id){
-                    crearToast('Exito', '', data.message, 'exito');
                     cargarPagina('./inicio',true, 'Inicio');
                     if(data.requireMenu){
                         fetch('./inicio', { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
@@ -53,6 +54,7 @@
                     }
                 }else{
                     crearToast('Error', '', data.message, 'error');
+                    btnIniciarSesion.disabled = false;
                 }
             });
     });

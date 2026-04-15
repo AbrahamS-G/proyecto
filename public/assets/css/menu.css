@@ -90,6 +90,12 @@ body.inactive .ocultar-menu img {
     transform: rotate(90deg);
 }
 
+body.inactive #loader {
+    left: 70px;
+    width: calc(100% - 70px);
+}
+
+
 .opciones-extra {
     display: flex;
     flex-direction: column;
@@ -101,7 +107,6 @@ body.inactive .ocultar-menu img {
     transform: rotate(270deg);
     display: flex;
     cursor: pointer;
-    background: #BB86FC;
     color: white;
     font-size: 16px;
     width: fit-content;
@@ -114,9 +119,10 @@ body.inactive .ocultar-menu img {
     right: 12px;
     transition: transform 0.3s ease-in-out;
     user-select: none;
+    background: #2A2A2A;
 }
 
 .ocultar-menu img:hover {
-    background: #2A2A2A;
+    background: #BB86FC;
     border: 1px solid #BB86FC;
 }

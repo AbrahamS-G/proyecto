@@ -1,10 +1,18 @@
+<?php
+$opcionesMenu = [
+    ['id' => 'inicio', 'titulo' => 'Inicio', 'icono' => './assets/img/default/inicio.svg'],
+    ['id' => 'dashboard', 'titulo' => 'Dashboard', 'icono' => './assets/img/default/dashboard.svg'],
+    ['id' => 'finanzas', 'titulo' => 'Finanzas', 'icono' => './assets/img/default/finanzas.svg'],
+    ['id' => 'laboratorio', 'titulo' => 'Laboratorio', 'icono' => './assets/img/default/lab.svg'],
+    ['id' => 'url', 'titulo' => 'Acortador', 'icono' => './assets/img/default/link.svg'],
+    ['id' => 'soporte', 'titulo' => 'Soporte', 'icono' => './assets/img/default/soporte.svg']
+];
+?>
 <nav id="menu">
     <ul>
-        <li onclick="cargarPagina('./inicio',true,'Inicio')"><img src="./assets/img/default/inicio.svg" alt="Inicio"><span>Inicio</span></li>
-        <li onclick="cargarPagina('./dashboard',true,'Dashboard')"><img src="./assets/img/default/dashboard.svg" alt="Dashboard"><span>Dashboard</span></li>
-        <li onclick="cargarPagina('./finanzas',true,'Finanzas')"><img src="./assets/img/default/finanzas.svg" alt="Finanzas"><span>Finanzas</span></li>
-        <li onclick="cargarPagina('./laboratorio',true,'Laboratorio')"><img src="./assets/img/default/lab.svg" alt="Laboratorio"><span>Laboratorio</span></li>
-        <li onclick="cargarPagina('./url',true,'Acortador')"><img src="./assets/img/default/link.svg" alt="Acortador de URLs"><span>Acortador de URLs</span></li>
+        <?php foreach ($opcionesMenu as $opcion) : ?>
+            <li onclick="cargarPagina('./<?= $opcion['id']; ?>',true,'<?= $opcion['titulo']; ?>')"><img src="<?= $opcion['icono']; ?>" alt="<?= $opcion['titulo']; ?>"><span><?= $opcion['titulo']; ?></span></li>
+        <?php endforeach; ?>
     </ul>
     <div class="opciones-extra">
         <div class="ocultar-menu" id="ocultar-menu" onclick="ocultarMenu()" title="Ocultar menú">

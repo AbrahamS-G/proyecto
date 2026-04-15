@@ -3,15 +3,16 @@
   justify-content: center;
   align-items: center;
   background-color: #0f0f0f81;
-  position: fixed;
+  position: absolute;
   top: 60px;
   bottom: 60px;
-  left: 0;
+  left: 250px;
   right: 0;
-  width: 100%;
+  width: calc(100% - 250px);
   height: calc(100% - 120px);
   z-index: 1000;
   overflow: hidden;
+  grid-area: main;
 }
 
 #loader.hidden {
