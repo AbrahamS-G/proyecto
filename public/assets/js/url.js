@@ -42,6 +42,7 @@ function darFeedback(btn) {
     }, 2000);
 }
 function eliminarUrl(btn, url) {
+    toggleLoader(true, '.urls');
     const formData = new FormData();
     formData.append('url', url);
     formData.append('eliminar', true);

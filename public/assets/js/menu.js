@@ -31,3 +31,5 @@ function mostrarMenu() {
 }
 
 inicializarMenu();
+document.getElementById('menu')?.addEventListener('mouseenter', mostrarMenu);
+document.getElementById('menu')?.addEventListener('mouseleave', ocultarMenu);

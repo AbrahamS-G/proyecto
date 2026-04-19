@@ -34,8 +34,7 @@ class Layout{
                 echo '<script src="./assets/js/'.$js.'.js"></script>';
             }
             ?>
-            <div id="loader"><div class="loader"></div></div>
-            <main class="main">
+            <main class="main" id="main">
             <?php } 
             $assets = self::getAssets($p);
             foreach($assets['css'] as $css){

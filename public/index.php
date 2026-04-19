@@ -18,7 +18,6 @@ if($router->esAjax() && $p !== 'login'){
     exit;
 }
 ?>
-<div id="notificacionesToast"></div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +29,11 @@ if($router->esAjax() && $p !== 'login'){
     <link rel="stylesheet" href="./assets/css/toast.css">
 </head>
 <body>
+    <div id="loader"><div class="loader"></div></div>
+    <div id="notificacionesToast"></div>
     <?php Layout::render($p, $auth, $data); ?>
     <script>
-        window.onload = function(){
-            document.getElementById('loader').style.display = 'none';
-        };
+        toggleLoader(false);
     </script>
 </body>
 </html>

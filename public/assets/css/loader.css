@@ -1,23 +1,22 @@
 #loader {
-  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 15, 15, 0.8);
+  display: none;
   justify-content: center;
   align-items: center;
-  background-color: #0f0f0f81;
-  position: absolute;
-  top: 60px;
-  bottom: 60px;
-  left: 250px;
-  right: 0;
-  width: calc(100% - 250px);
-  height: calc(100% - 120px);
-  z-index: 1000;
+  z-index: 9999;
+  transition: opacity 0.3s ease-in-out;
   overflow: hidden;
-  grid-area: main;
-  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+  backdrop-filter: blur(2px);
 }
 
 #loader.hidden {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .loader {

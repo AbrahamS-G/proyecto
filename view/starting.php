@@ -36,11 +36,11 @@
 </div>
 <script>
     document.querySelector('.login-button').addEventListener('click', function() { 
-        mostrarLoader(2000);
+        toggleLoader(true, '.starting');
         mostrarLogin();
     });
     document.querySelector('.register-button').addEventListener('click', function() { 
-        mostrarLoader(2000);
+        toggleLoader(true, '.starting');
         mostrarRegister();
     });
 </script>
@@ -52,6 +52,9 @@ if($parametro == '' || $parametro == 'login'){ ?>
         if (typeof mostrarLogin === "function") {
             mostrarLogin();
         }
+        if (typeof toggleLoader === "function") {
+            toggleLoader(false, '.starting');
+        }
     });
 </script>
 <?php 
@@ -62,12 +65,11 @@ if($parametro == '' || $parametro == 'login'){ ?>
             mostrarRegister();
         }
     });
+    // transicioned
+    document.getElementById('cardStarting').addEventListener('transitionend', function() {
+        toggleLoader(false, '.starting');
+    });
 </script>
 <?php 
 }
 ?>
-<script>
-    document.querySelector('.starting').addEventListener('transitionend', function() {
-        document.getElementById('loader').style.display = 'none';
-    });
-</script>

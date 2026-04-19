@@ -90,12 +90,6 @@ body.inactive .ocultar-menu img {
     transform: rotate(90deg);
 }
 
-body.inactive #loader {
-    left: 70px;
-    width: calc(100% - 70px);
-}
-
-
 .opciones-extra {
     display: flex;
     flex-direction: column;

@@ -1,5 +1,5 @@
 function cargarPagina(url, saveHistory = true, titulo = "") {
-    mostrarLoader();
+    toggleLoader(true, '.main');
     fetch(url, {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     })
@@ -18,24 +18,50 @@ function cargarPagina(url, saveHistory = true, titulo = "") {
                 }
                 ejecutarScripts(contenedor);
             }
-            document.getElementById('loader').style.display = 'none';
+            toggleLoader(false, '.main');
         })
         .catch(error => {
-            console.error(error);
+            toggleLoader(false, '.main');
         });
 }
-function mostrarLoader() {
-    const loader = document.getElementById('loader');
-    if (loader) {
+function toggleLoader(show = true, targetSelector = 'body') {
+    const target = document.querySelector(targetSelector);
+    if (!target) return;
+
+    let loader = target.querySelector('.custom-loader');
+
+    if (show) {
+        if (!loader) {
+            loader = document.createElement('div');
+            loader.className = 'custom-loader';
+            loader.innerHTML = '<div class="loader"></div>';
+            Object.assign(loader.style, {
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'rgba(15, 15, 15, 0.7)',
+                zIndex: '1000'
+            });
+            target.appendChild(loader);
+        }
         loader.style.display = 'flex';
+    } else {
+        if (loader) {
+            loader.style.display = 'none';
+            loader.remove();
+        }
     }
 }
-function ocultarLoader() {
-    const loader = document.getElementById('loader');
-    if (loader) {
-        loader.style.display = 'none';
-    }
-}
+
+// Control de carga inicial de la página
+window.addEventListener('load', () => {
+    toggleLoader(false);
+});
 document.addEventListener('submit', e => {
     const form = e.target;
     if (form.method.toLowerCase() === 'post') {
@@ -43,7 +69,7 @@ document.addEventListener('submit', e => {
 
         const formData = new FormData(form);
         const url = form.getAttribute('action') || window.location.pathname;
-        cargarPagina(url);
+        toggleLoader(true);
 
         fetch(url, {
             method: 'POST',
@@ -60,6 +86,7 @@ document.addEventListener('submit', e => {
                     contenedor.innerHTML = html;
                     ejecutarScripts(contenedor);
                 }
+                toggleLoader(false);
             });
     }
 });
