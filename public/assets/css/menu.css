@@ -74,7 +74,7 @@ body.inactive {
     grid-template-areas:
         'header header'
         'menu main'
-        'footer footer';
+        'menu footer';
 }
 
 body.inactive #menu ul li span {
@@ -109,7 +109,7 @@ body.inactive .ocultar-menu img {
     border-radius: 50%;
     border: 1px solid #BB86FC;
     position: absolute;
-    bottom: 10px;
+    bottom: 8px;
     right: 12px;
     transition: transform 0.3s ease-in-out;
     user-select: none;

@@ -10,7 +10,7 @@ body {
     grid-template-areas:
         'header header'
         'menu main'
-        'footer footer';
+        'menu footer';
     cursor: default;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
