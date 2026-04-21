@@ -56,6 +56,6 @@ if(!isset($_SESSION['logueado']) || $_SESSION['logueado'] != 1){
     <p>El administrador no garantiza la disponibilidad permanente del servicio ni se hace responsable por la pérdida de datos derivados de fallos en la base de datos o mal uso de las credenciales de acceso.</p>
 
     <?php if(!isset($_SESSION['logueado']) || $_SESSION['logueado'] != 1){ ?>
-    <button class="btn-menu btn-regresar-login" onclick="cargarPagina('login', true, 'Login')">Regresar al Login</button>
+    <button class="btn-menu btn-regresar-login" onclick="cargarPagina('starting', true, 'Login')">Regresar al Login</button>
     <?php } ?>
 </div>

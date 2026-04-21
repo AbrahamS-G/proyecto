@@ -27,7 +27,7 @@
             .then(response => response.json())
             .then(data => {
                 if(data.success && data.id){
-                    cargarPagina('./inicio',true, 'Inicio');
+                    // cargarPagina('./inicio',true, 'Inicio');
                     if(data.requireMenu){
                         fetch('./inicio', { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
                         .then(() => {

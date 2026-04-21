@@ -36,40 +36,23 @@
 </div>
 <script>
     document.querySelector('.login-button').addEventListener('click', function() { 
-        toggleLoader(true, '.starting');
         mostrarLogin();
     });
     document.querySelector('.register-button').addEventListener('click', function() { 
-        toggleLoader(true, '.starting');
         mostrarRegister();
     });
 </script>
 <?php 
-$parametro = isset($_GET['parametros'][0]) && !empty($_GET['parametros'][0]) ? $_GET['parametros'][0] : '';
-if($parametro == '' || $parametro == 'login'){ ?>
+$parametro = isset($_GET['parametros'][0]) && !empty($_GET['parametros'][0]) ? $_GET['parametros'][0] : 'login';
+if($parametro == 'login'){ ?>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        if (typeof mostrarLogin === "function") {
-            mostrarLogin();
-        }
-        if (typeof toggleLoader === "function") {
-            toggleLoader(false, '.starting');
-        }
-    });
-</script>
+        mostrarLogin();
+    </script>
 <?php 
 }else if($parametro == 'register'){ ?>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        if (typeof mostrarRegister === "function") {
-            mostrarRegister();
-        }
-    });
-    // transicioned
-    document.getElementById('cardStarting').addEventListener('transitionend', function() {
-        toggleLoader(false, '.starting');
-    });
-</script>
+        mostrarRegister();
+    </script>
 <?php 
 }
 ?>

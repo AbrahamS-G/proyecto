@@ -21,7 +21,8 @@ if($usuario != '' && $clave != ''){
     }else{
         echo json_encode([
             'success' => false,
-            'message' => 'Usuario o clave incorrectos'
+            'message' => 'Usuario o clave incorrectos',
+            'requireMenu' => false
         ]);
     }
 }else{

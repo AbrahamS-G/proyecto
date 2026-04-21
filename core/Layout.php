@@ -40,14 +40,14 @@ class Layout{
             foreach($assets['css'] as $css){
                 echo '<link rel="stylesheet" href="./assets/css/'.$css.'.css">';
             }
+            foreach($assets['js'] as $js){
+                echo '<script src="./assets/js/'.$js.'.js"></script>';
+            }
             if(is_file('../view/'.$p.'.php')){
                     include('../view/'.$p.'.php');
                 }else{
                     include('../view/404.php');
                 }
-            foreach($assets['js'] as $js){
-                echo '<script src="./assets/js/'.$js.'.js"></script>';
-            }
             if (!$esAjax) {
                 echo "</main>";
                 include('../inc/footer.php');
