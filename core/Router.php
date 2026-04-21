@@ -34,8 +34,7 @@ class Router{
             exit;
         }
         $estaLogueado = isset($_SESSION['logueado']) && $_SESSION['logueado'] === 1;
-        // permitir entrar a url siempre y cuando tenga parametros
-        if((!$estaLogueado) && $p !== "starting"){
+        if((!$estaLogueado) && $p !== "starting" && $p !== "terminos"){
             header('location: /proyecto/starting');
             exit;
         }elseif($estaLogueado && $p === "starting"){

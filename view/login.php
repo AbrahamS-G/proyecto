@@ -9,6 +9,7 @@
         <small class="right-small">¿Olvidaste Tú Clave? <a href="">Pulsa Aquí</a></small>
         <button type="submit" class="btnIniciarSesion">Iniciar Sesión</button>
         <small>¿Aún no tienes cuenta? <a href="">Pulsa Aquí</a></small>
+        <small>Al acceder a este sitio aceptas los <a href="javascript:void(0)" onclick="cargarPagina('terminos',true,'Terminos y Condiciones')">Terminos y Condiciones</a></small>
     </form>
 </div>
 <script>

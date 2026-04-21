@@ -54,7 +54,7 @@ main {
     display: flex;
     flex-direction: column;
     overflow: auto;
-    padding: 10px;
+    padding: 0 20px;
 }
 
 footer {
@@ -111,8 +111,6 @@ footer {
     display: flex;
     align-items: center;
     gap: 5px;
-    padding: 5px;
-    margin-left: 10px;
     border-bottom: 2px solid #5a618f;
     width: fit-content;
     transition: transform 0.3s ease-in-out;
@@ -201,4 +199,8 @@ footer {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+}
+
+a {
+    color: #F1F1F1;
 }

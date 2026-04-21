@@ -7,4 +7,5 @@
         <input type="password" name="password" placeholder="Ingresa la contraseña" id="Password" autocomplete="off">
         <button class="btn-menu" type="button">Crear</button>
     </form>
+    <small>Al acceder a este sitio aceptas los <a href="javascript:void(0)" onclick="cargarPagina('terminos',true,'Terminos y Condiciones')">Terminos y Condiciones</a></small>
 </div>
