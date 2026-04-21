@@ -23,15 +23,15 @@ if(!isset($urlnoencontrada)){
     <div class="creadorUrl">
         <b id="mensajeUrl"></b>
         <form action="/proyecto/url" method="post">
-        <h2>Acortar una URL</h2>
-        <input type="text" name="nombre" placeholder="Ingresa el nombre de la URL" id="NombreUrl" autocomplete="off">
-        <input type="text" name="url" placeholder="Ingresa la URL a acortar" id="UrlLarga" autocomplete="off">
-        <button class="btn-menu" type="button">Crear</button>
-    </form>
-</div>
-<div class="misUrls">
-    <h2>Mis URLs</h2>
-    <table>
+            <h2>Acortar una URL</h2>
+            <input type="text" name="nombre" placeholder="Ingresa el nombre de la URL" id="NombreUrl" autocomplete="off">
+            <input type="text" name="url" placeholder="Ingresa la URL a acortar" id="UrlLarga" autocomplete="off">
+            <button class="btn-menu" type="button" id="btnAcortar" onclick="crearUrl()">Acortar</button>
+        </form>
+    </div>
+    <div class="misUrls">
+        <h2>Mis URLs</h2>
+        <table>
         <thead>
             <tr>
                 <th>No</th>

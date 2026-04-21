@@ -38,6 +38,7 @@ if($eliminar){
         'message' => 'No se recibió la URL'
     ]);
     exit;
+    // aceptar espacios en nombre
 }else if(!$nombre || !preg_match('/^[a-zA-Z0-9_\-\.]+$/', $nombre) || preg_match('/^(https?:\/\/|www\.).+$/', $nombre)){
     echo json_encode([
         'success' => false,

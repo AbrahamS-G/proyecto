@@ -64,7 +64,7 @@ function eliminarUrl(btn, url) {
         });
 }
 // ajax de url mandarlo a /api/url con post
-document.querySelector('.creadorUrl form button').addEventListener('click', function (e) {
+function crearUrl() {
     const formData = new FormData(document.querySelector('.creadorUrl form'));
     fetch('./public/api/url.php', {
         method: 'POST',
@@ -86,4 +86,4 @@ document.querySelector('.creadorUrl form button').addEventListener('click', func
         }).catch(error => {
             crearToast('Error', '', error.message, 'error');
         });
-});
+}
