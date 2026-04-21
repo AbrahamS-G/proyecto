@@ -3,6 +3,7 @@ $opcionesMenu = [
     ['id' => 'inicio', 'titulo' => 'Inicio', 'icono' => './assets/img/default/inicio.svg'],
     ['id' => 'dashboard', 'titulo' => 'Dashboard', 'icono' => './assets/img/default/dashboard.svg'],
     ['id' => 'finanzas', 'titulo' => 'Finanzas', 'icono' => './assets/img/default/finanzas.svg'],
+    ['id' => 'pendientes', 'titulo' => 'Pendientes', 'icono' => './assets/img/default/pendientes.svg'],
     ['id' => 'laboratorio', 'titulo' => 'Laboratorio', 'icono' => './assets/img/default/lab.svg'],
     ['id' => 'url', 'titulo' => 'Acortador', 'icono' => './assets/img/default/link.svg'],
     ['id' => 'soporte', 'titulo' => 'Soporte', 'icono' => './assets/img/default/soporte.svg']

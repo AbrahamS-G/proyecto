@@ -1,0 +1,1 @@
+<h2 class="tituloPagina"><img src="./assets/img/default/pendientes.svg" alt="">Pendientes</h2></>
