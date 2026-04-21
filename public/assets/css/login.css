@@ -7,6 +7,7 @@
     border-radius: 10px;
     margin: 0 auto;
     width: 26dvw;
+    min-width: 300px;
     height: 48dvh;
     padding: 15px;
 }

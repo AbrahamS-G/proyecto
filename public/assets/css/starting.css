@@ -12,8 +12,9 @@ body.inactive {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 95%;
-    margin: 0 auto;
+    width: 85%;
+    min-width: 970px;
+    margin: 10px auto;
     min-height: calc(100dvh - 140px);
     border-radius: 8px;
     background-color: #1E1E1E;
@@ -36,6 +37,7 @@ body.inactive {
     height: calc(100% - 60px);
     max-height: calc(100% - 55px);
     width: calc(50% - 50px);
+    min-width: 400px;
     align-items: left;
     justify-content: center;
     padding: 20px;
